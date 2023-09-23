@@ -1,6 +1,6 @@
 # 团队报名系统
 
-[项目地址](https://github.com/HerveyB3B4/TeamRegistionSystem-Front)
+[项目地址](https://github.com/HerveyB3B4/TeamRegistrationSystem-Front)
 
 # Vue 3 + TypeScript + Vite
 

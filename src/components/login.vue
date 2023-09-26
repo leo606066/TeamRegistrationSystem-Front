@@ -1,16 +1,17 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  const username = ref('')
-  const password = ref('')
+  import { reactive } from 'vue'
+  const registerForm = reactive({
+    account: '',
+    password: '',
+  })
 </script>
 
 <template>
   <el-card class="ep-bg-purple" >
-    <el-text size="large" tag="b" type="info">Login your account</el-text>
     <el-row justify="center" :gutter="10">
       <el-col :span="50">
         <el-input
-          v-model="username"
+          v-model="registerForm.account"
           placeholder="Username"
           clearable
         >
@@ -23,7 +24,7 @@
     <el-row justify="center" :gutter="10">
       <el-col :span="50">
         <el-input
-          v-model="password"
+          v-model="registerForm.password"
           type="password"
           placeholder="Password"
           show-password

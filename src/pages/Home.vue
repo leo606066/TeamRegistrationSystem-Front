@@ -1,8 +1,9 @@
 <script setup lang="ts">
+  import HeaderVue from "../components/Header.vue"
 </script>
 
 <template>
-  <router-view />
+  <HeaderVue />
 </template>
 
 <style scoped>

@@ -35,9 +35,9 @@
         </el-input>
       </el-col>
     </el-row>
-    <el-row justify="end" :gutter="10">
+    <!-- <el-row justify="end" :gutter="10">
         <el-link :underline="false" type="primary" href="/forgot">Forgot password</el-link>
-    </el-row>
+    </el-row> -->
     <el-button type="primary">Sign in</el-button>
   </el-card>
   <el-card>

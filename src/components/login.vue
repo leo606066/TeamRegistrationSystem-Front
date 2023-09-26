@@ -36,9 +36,9 @@
         </el-input>
       </el-col>
     </el-row>
-    <!-- <el-row justify="end" :gutter="10">
+    <el-row justify="end" :gutter="10">
         <el-link :underline="false" type="primary" href="/forgot">Forgot password</el-link>
-    </el-row> -->
+    </el-row>
     <el-button type="primary">Login</el-button>
   </el-card>
   <el-card>
@@ -47,6 +47,7 @@
         <el-text>
             New User?
             &nbsp
+            <!-- <el-button type="primary">Register</el-button> -->
             <el-link :underline="false" type="primary" href="/register">Register</el-link>
         </el-text>
       </el-col>
@@ -71,6 +72,6 @@
   margin-bottom: 0;
 }
 .el-link {
-    margin-top: -3.6px;
+    margin-top: -3.8px;
 }
 </style>

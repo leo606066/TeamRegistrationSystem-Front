@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
+  import RegisterVue from "../components/register.vue";
 </script>
 
 <template>
-  <HeaderVue />
+  <RegisterVue />
 </template>
 
 <style scoped>

@@ -5,10 +5,8 @@
 </script>
 
 <template>
-  <el-text size="large" tag="b" type="info">Login your account</el-text>
-  <br />
-  <br />
   <el-card class="ep-bg-purple" >
+    <el-text size="large" tag="b" type="info">Login your account</el-text>
     <el-row justify="center" :gutter="10">
       <el-col :span="50">
         <el-input
@@ -39,7 +37,7 @@
     <el-row justify="end" :gutter="10">
         <el-link :underline="false" type="primary" href="/forgot">Forgot password</el-link>
     </el-row>
-    <el-button type="primary">Login</el-button>
+    <el-button type="primary">Sign in</el-button>
   </el-card>
   <el-card>
     <el-row justify="center" align="center" :gutter="20">

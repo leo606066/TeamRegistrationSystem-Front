@@ -21,6 +21,7 @@
       callback()
     }
   }
+  
   const validatePass2 = (rule: any, value: any, callback: any) => {
     if (value === '') {
       callback(new Error('Please input the password again'))

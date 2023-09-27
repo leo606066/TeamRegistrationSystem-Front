@@ -4,6 +4,30 @@
 
   const registerFormRef = ref<FormInstance>()
 
+  const validatePhone = (rule: any, value: any, callback: any) => {
+    var EmailRegularExpression = /^1[3456789]\d{9}$/
+    if (value === '') {
+      callback(new Error('Please input the Phone number'))
+    } else {
+      if (!EmailRegularExpression.test(value)) {
+        callback(new Error('Phone number is invalidated'))
+      }
+      callback()
+    }
+  }
+
+  const validateEmail = (rule: any, value: any, callback: any) => {
+    var EmailRegularExpression = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    if (value === '') {
+      callback(new Error('Please input the E-mail address'))
+    } else {
+      if (!EmailRegularExpression.test(value)) {
+        callback(new Error('E-mail address is invalidated'))
+      }
+      callback()
+    }
+  }
+
   const validatePass = (rule: any, value: any, callback: any) => {
     if (value === '') {
       callback(new Error('Please input the password'))
@@ -41,9 +65,11 @@
     phone:[
       { required: true, message: 'Phone is required' },
       { type: 'number', message: 'Phone must be a number' },
+      { validator: validatePhone, trigger: 'blur' }
     ],
     email:[
       { required: true, message: 'E-mail is required' },
+      { validator: validateEmail, trigger: 'blur' }
     ],
     password: [
       { required: true, message: 'Password is required' },
@@ -60,6 +86,7 @@
     formEl.validate((valid) => {
       if (valid) {
         console.log('submit!')
+        // TODO: upload registration information to the backend
       } else {
         console.log('error submit!')
         return false
@@ -87,21 +114,20 @@
       class="Register"
     >
       <el-form-item label="Name" prop="name">
-        <el-input v-model.number="registerForm.name" />
+        <el-input v-model="registerForm.name" />
       </el-form-item>
-      <el-form-item label="Phone" prop="phone"
-        :rules="rules"
-      >
+      <el-form-item label="Phone" prop="phone">
         <el-input v-model.number="registerForm.phone" />
       </el-form-item>
       <el-form-item label="E-mail" prop="email">
-        <el-input v-model.number="registerForm.email" />
+        <el-input v-model="registerForm.email" />
       </el-form-item>
       <el-form-item label="Password" prop="password">
         <el-input
-        v-model="registerForm.password"
-        type="password"
-        autocomplete="off" />
+          v-model="registerForm.password"
+          type="password"
+          autocomplete="off"
+        />
       </el-form-item>
       <el-form-item label="Confirm" prop="repassword">
         <el-input

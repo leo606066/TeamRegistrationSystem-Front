@@ -17,7 +17,7 @@
   }
 
   const validateEmail = (rule: any, value: any, callback: any) => {
-    var EmailRegularExpression = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    var EmailRegularExpression = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/
     if (value === '') {
       callback(new Error('Please input the E-mail address'))
     } else {
@@ -29,8 +29,11 @@
   }
 
   const validatePass = (rule: any, value: any, callback: any) => {
+    var PasswordRegularExpression = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,}$/
     if (value === '') {
       callback(new Error('Please input the password'))
+    } else if (!PasswordRegularExpression.test(value)) {
+      callback(new Error('Password is invalidated'))
     } else {
       if (registerForm.repassword !== '') {
         if (!registerFormRef.value) return

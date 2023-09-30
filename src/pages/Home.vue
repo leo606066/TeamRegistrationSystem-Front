@@ -3,6 +3,9 @@
 </script>
 
 <template>
+  <el-aside>
+    <MenuVue />
+  </el-aside>
   <br>
   <el-link href="/login">Login</el-link>
   <br>

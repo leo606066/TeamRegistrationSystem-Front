@@ -29,7 +29,7 @@
   }
 
   const validatePass = (rule: any, value: any, callback: any) => {
-    var PasswordRegularExpression = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,}$/
+    var PasswordRegularExpression = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z -~]{8,25}$/
     if (value === '') {
       callback(new Error('Please input the password'))
     } else if (!PasswordRegularExpression.test(value)) {

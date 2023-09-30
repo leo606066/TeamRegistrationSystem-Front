@@ -19,12 +19,12 @@ const routes = [
         name: "Register",
         component: RegisterVue
     }
-]
+];
 
 const router = createRouter({
     history: createWebHistory(),
     routes: routes
-})
+});
 
 export default router;
 

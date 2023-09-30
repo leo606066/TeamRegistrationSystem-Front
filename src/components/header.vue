@@ -11,11 +11,11 @@
         <span>首页</span>
       </el-menu-item>
       <div class="flex-grow" />
-      <el-menu-item>
+      <!-- <el-menu-item>
         <el-avatar
         src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
         />
-      </el-menu-item>
+      </el-menu-item> -->
       <div class="flex-grow" />
       <el-menu-item index="/login">
         <span>登录</span>

@@ -1,3 +1,19 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { ref } from 'vue';
+import { Search } from '@element-plus/icons-vue';
+
+const input = ref('');
+
+export default defineComponent({
+  computed: {
+    activeMenu() {
+      return this.$route.path; // 当前激活的路由路径
+    }
+  },
+});
+</script>
+
 <template>
   <div class="container">
     <el-menu
@@ -11,6 +27,17 @@
         <span>首页</span>
       </el-menu-item>
       <div class="flex-grow" />
+      <el-input
+        v-model="input"
+        placeholder="Search"
+        class="search"
+      >
+        <template #append>
+          <el-button>
+            <el-icon><Search /></el-icon>
+          </el-button>
+        </template>
+      </el-input>
       <!-- <el-menu-item>
         <el-avatar
         src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
@@ -23,22 +50,9 @@
       <el-menu-item index="/register">
         <span>注册</span>
       </el-menu-item>
-      <!-- 添加其他菜单项 -->
     </el-menu>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  computed: {
-    activeMenu() {
-      return this.$route.path; // 当前激活的路由路径
-    }
-  },
-});
-</script>
 
 <style scoped>
 .container {
@@ -54,5 +68,10 @@ export default defineComponent({
 }
 .top-nav {
   width: 100%; /* 导航栏宽度 */
+}
+.search {
+  width: 20%;
+  height: 50%;
+  top: 25%;
 }
 </style>

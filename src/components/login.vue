@@ -1,16 +1,17 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import loginService from '../apis/loginService'
+  import { ref } from 'vue';
+  import loginService from '../apis/loginService';
 
-  const account = ref('')
-  const password = ref('')
+  const account = ref('');
+  const password = ref('');
+  
   const login = async () => {
     const loginInfo = ref({
       account: account.value,
       password: password.value
     });
 
-    const res = await loginService.login(loginInfo.value)
+    const res = await loginService.login(loginInfo.value);
 
     if (res.data.msg === "登录成功" && res.data.code === 200) {
       const responseData = res.data.data;

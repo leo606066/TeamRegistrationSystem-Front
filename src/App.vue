@@ -7,13 +7,13 @@
 <template>
   <el-container>
     <el-header>
-      <HeaderVue />
+      <HeaderVue :style="{ zIndex: 1 }" />
     </el-header>
     <el-main>
-    <router-view />
+    <router-view :style="{ zIndex: 0 }"/>
     </el-main>
     <el-footer>
-      <FooterVue />
+      <FooterVue :style="{ zIndex: 0 }"/>
     </el-footer>
   </el-container>
 </template>

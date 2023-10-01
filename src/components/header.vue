@@ -1,24 +1,15 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { ref } from 'vue';
 import { Search } from '@element-plus/icons-vue';
 
 const input = ref('');
-
-export default defineComponent({
-  computed: {
-    activeMenu() {
-      return this.$route.path; // 当前激活的路由路径
-    }
-  },
-});
 </script>
 
 <template>
   <div class="container">
     <el-menu
       class="top-nav"
-      :default-active="activeMenu"
+      :default-active="$route.path"
       mode="horizontal"
       :ellipsis="false"
       router>

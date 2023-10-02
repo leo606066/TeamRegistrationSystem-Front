@@ -84,7 +84,7 @@
     ],
   })
 
-  const submitForm = (formEl: FormInstance | undefined) => {
+  const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
       if (valid) {

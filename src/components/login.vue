@@ -65,7 +65,6 @@
         <el-text>
             New User?
             &nbsp
-            <!-- <el-button type="primary">Register</el-button> -->
             <el-link :underline="false" type="primary" href="/register">Register</el-link>
         </el-text>
       </el-col>

@@ -13,12 +13,14 @@
 
     const res = await userService.login(loginInfo.value);
 
-    if (res.data.msg === "登录成功" && res.data.code === 200) {
-      const responseData = res.data.data;
-      const UID = responseData.user_id;
-      console.log(UID);
-    } else {
-      console.log(res.data.msg);
+    if (res.data.code === 200) {
+      if (res.data.msg === "登录成功") {
+        const responseData = res.data.data;
+        const UID = responseData.user_id;
+        console.log(UID);
+      } else {
+        console.log(res.data.msg);
+      }
     }
   }
 </script>
@@ -55,7 +57,7 @@
     <!-- <el-row justify="end" :gutter="10">
         <el-link :underline="false" type="primary" href="/forgot">Forgot password</el-link>
     </el-row> -->
-    <el-button type="primary" @click="login">Sign in</el-button>
+    <el-button type="primary" @click="login">登录</el-button>
   </el-card>
   <el-card>
     <el-row justify="center" align="center" :gutter="20">

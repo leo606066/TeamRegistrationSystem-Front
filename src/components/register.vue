@@ -1,11 +1,12 @@
 <script setup lang="ts">
   import { reactive, ref } from 'vue'
   import type { FormInstance, FormRules } from 'element-plus'
+  import { userService } from '../apis/userService'
 
   const registerFormRef = ref<FormInstance>()
 
   const validateName = (rule: any, value: any, callback: any) => {
-    var NameRegularExpression = /^[0-9A-Za-z]{1,25}$/
+    var NameRegularExpression = /^[\w\s\p{Han}]{1,25}$/
     if (value === '') {
       callback(new Error('Please input the name'))
     } else {
@@ -97,12 +98,33 @@
     ],
   })
 
-  const submitForm = async (formEl: FormInstance | undefined) => {
+  const submit = async () => {
+    const userInfo = ref({
+      name: registerForm.name,
+      phone: registerForm.phone,
+      email: registerForm.email,
+      password: registerForm.password,
+    })
+
+    const res = await userService.register(userInfo.value);
+
+    if (res.data.code === 200) {
+      if (res.data.msg === "注册成功") {
+        const responseData = res.data.data;
+        const UID = responseData.user_id;
+        console.log(UID);
+      } else {
+        console.log(res.data.msg);
+      }
+    }
+  }
+
+  const submitForm = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
       if (valid) {
         console.log('submit!')
-        // TODO: upload registration information to the backend
+        submit();
       } else {
         console.log('error submit!')
         return false
@@ -118,7 +140,7 @@
 
 <template>
   <el-card class="ep-bg-purple" >
-    <el-text size="large" tag="b" type="info">Register new account</el-text>
+    <el-text size="large" tag="b" type="info">注册新用户</el-text>
   <br />
     <el-icon size="150px"><Avatar /></el-icon>
     <el-form
@@ -129,23 +151,23 @@
       label-width="70px"
       class="Register"
     >
-      <el-form-item label="Name" prop="name">
+      <el-form-item label="昵称" prop="name">
         <el-input v-model="registerForm.name" />
       </el-form-item>
-      <el-form-item label="Phone" prop="phone">
+      <el-form-item label="电话" prop="phone">
         <el-input v-model.number="registerForm.phone" />
       </el-form-item>
-      <el-form-item label="E-mail" prop="email">
+      <el-form-item label="邮箱" prop="email">
         <el-input v-model="registerForm.email" />
       </el-form-item>
-      <el-form-item label="Password" prop="password">
+      <el-form-item label="密码" prop="password">
         <el-input
           v-model="registerForm.password"
           type="password"
           autocomplete="off"
         />
       </el-form-item>
-      <el-form-item label="Confirm" prop="repassword">
+      <el-form-item label="确认" prop="repassword">
         <el-input
           v-model="registerForm.repassword"
           type="password"
@@ -153,8 +175,8 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm(registerFormRef)">Sign up</el-button>
-        <el-button @click="resetForm(registerFormRef)">Reset</el-button>
+        <el-button type="primary" @click="submitForm(registerFormRef)">注册</el-button>
+        <el-button @click="resetForm(registerFormRef)">重置</el-button>
       </el-form-item>
     </el-form>
   </el-card>

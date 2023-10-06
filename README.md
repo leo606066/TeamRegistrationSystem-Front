@@ -1,7 +1,7 @@
 # 团队报名系统
 
 [前端项目地址](https://github.com/HerveyB3B4/TeamRegistrationSystem-Front)
-[后端项目地址](https://github.com/HerveyB3B4/TeamRegistrationSystem-Front)
+[后端项目地址](https://github.com/Penryn/TeamRegistrationSystem-Back)
 
 ## 团队报名系统
 #### 基础要求

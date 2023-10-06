@@ -24,7 +24,7 @@
 </script>
 
 <template>
-  <el-card class="ep-bg-purple" >
+  <el-card>
     <el-row justify="center" :gutter="10">
       <el-col :span="50">
         <el-input

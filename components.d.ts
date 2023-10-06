@@ -44,6 +44,7 @@ declare module 'vue' {
     ElText: typeof import('element-plus/es')['ElText']
     Footer: typeof import('./src/components/footer.vue')['default']
     Header: typeof import('./src/components/header.vue')['default']
+    Home: typeof import('./src/components/home.vue')['default']
     Login: typeof import('./src/components/login.vue')['default']
     Menu: typeof import('./src/components/menu.vue')['default']
     Register: typeof import('./src/components/register.vue')['default']

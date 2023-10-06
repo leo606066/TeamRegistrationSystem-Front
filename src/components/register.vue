@@ -4,6 +4,18 @@
 
   const registerFormRef = ref<FormInstance>()
 
+  const validateName = (rule: any, value: any, callback: any) => {
+    var NameRegularExpression = /^[0-9A-Za-z]{1,25}$/
+    if (value === '') {
+      callback(new Error('Please input the name'))
+    } else {
+      if (!NameRegularExpression.test(value)) {
+        callback(new Error('Name is invalidated'))
+      }
+      callback()
+    }
+  }
+
   const validatePhone = (rule: any, value: any, callback: any) => {
     var EmailRegularExpression = /^1[3456789]\d{9}$/
     if (value === '') {
@@ -64,6 +76,7 @@
   const rules = reactive<FormRules<typeof registerForm>>({
     name:[
       { required: true, message: 'Name is required' },
+      { validator: validateName, trigger: 'blur' }
     ],
     phone:[
       { required: true, message: 'Phone is required' },

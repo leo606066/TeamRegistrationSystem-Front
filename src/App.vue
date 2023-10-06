@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import HeaderVue from './components/header.vue';
   import FooterVue from './components/footer.vue';
-  // import MenuVue from './components/menu.vue';
 </script>
 
 <template>

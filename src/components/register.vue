@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { reactive, ref } from 'vue'
   import type { FormInstance, FormRules } from 'element-plus'
-  import { userService } from '../apis/userService'
+  import userService from '../apis/userService'
 
   const registerFormRef = ref<FormInstance>()
 

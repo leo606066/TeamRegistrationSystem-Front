@@ -1,22 +1,24 @@
 # 团队报名系统
 
-[项目地址](https://github.com/HerveyB3B4/TeamRegistrationSystem-Front)
+[前端项目地址](https://github.com/HerveyB3B4/TeamRegistrationSystem-Front)
+[后端项目地址](https://github.com/HerveyB3B4/TeamRegistrationSystem-Front)
 
-# Vue 3 + TypeScript + Vite
+## 团队报名系统
+#### 基础要求
+1.登录与注册功能
+2.能够编辑自己的个人信息(包括基本信息以及联系方式)
+3.可以创建团队(创建者为队长，能够管理团队和队员)
+4.未组队的人能通过团队编号和密码加入团队，团队人数4-6人才可提交报名，且提交报名后不可更换队可以撤销提交状态
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+#### 提高要求
+1.鉴权(session或JWT)
+2.消息通知功能（成员加入、团队解散等)
+3.能够上传团队头像
+4.考虑管理员页面、比如查看团队提交状态、用户管理等
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+> 注意事项
+1.优先保证基础要求有余力的团队可以考虑提高要求。
+2.可以在原有要求之上进行自由拓展考虑和展现的东西更全面的话会有额外加分
+3.使用Apifox作为接口文档。
+4.使用git进行版本管理，并创建一个GitHub的库托管代码。
+5.在开发完成后尝试将项目部署到服务器上（最低要求是本地前后端能一起展现)

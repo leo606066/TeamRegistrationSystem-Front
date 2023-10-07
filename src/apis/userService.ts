@@ -1,5 +1,5 @@
 import request from "./request";
-import { loginInfo, registerInfo } from "../types/personalInfo";
+import { loginInfo, registerInfo, userInfo } from "../types/personalInfo";
 
 export default class userService {
     static async login(data: loginInfo) : Promise<any> {
@@ -8,7 +8,7 @@ export default class userService {
                 "content-Type": "application/json"
             },
             method: "post",
-            url: "/login",
+            url: "/api/login",
             data: data
         });
     }
@@ -19,8 +19,18 @@ export default class userService {
                 "content-Type": "application/json"
             },
             method: "post",
-            url: "/reg",
+            url: "/api/reg",
             data: data
+        });
+    }
+
+    static async getBasicPersonalInformation() : Promise<any> {
+        return request({
+            "headers": {
+                "content-Type": "application/json"
+            },
+            method: "get",
+            url: "/api/user/info",
         });
     }
 }

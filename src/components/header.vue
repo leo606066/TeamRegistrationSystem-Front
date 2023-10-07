@@ -61,7 +61,7 @@ const pushToRegister = () => {
         &ensp;
         &ensp;
         &ensp;
-        <el-avatar />
+        <el-avatar src="{{ avatar }}"/>
       </div>
       &ensp;
     </el-menu>

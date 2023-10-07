@@ -11,7 +11,12 @@ export interface registerInfo {
 }
 
 export interface userInfo {
-	user_id: number,
+    user_id: number,
     name: string,
-    avatarURL: string,
+    phone: string,
+    email: string,
+    birthday: string,
+    address: string,
+    motto: string,
+    avatar: string,
 }

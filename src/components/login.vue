@@ -1,39 +1,51 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import userService from '../apis/userService';
-  import loginStore from '../stores/loginStore.ts';
-  import userStore from '../stores/userStore.ts';
-  import { storeToRefs } from 'pinia';
-
+  import loginStore from '../stores/loginStore';
+  import userStore from '../stores/userStore';
+  import { ElMessage } from 'element-plus'
+  // import { storeToRefs } from 'pinia';
+  // import { userInfo } from '../types/personalInfo';
   
   const newLoginStore = loginStore();
   const newUserStore = userStore();
-  const { loginSession } = storeToRefs(newLoginStore);
 
   const account = ref('');
   const password = ref('');
   
   const login = async () => {
+
     const loginInfo = ref({
       account: account.value,
       password: password.value
     });
 
-    console.log("发送请求");
-    const res = await userService.login(loginInfo.value);
+    console.log("发送请求：登录");
+    const loginData = await userService.login(loginInfo.value);
     console.log("请求成功");
-    console.log(res);
+    console.log(loginData);
 
-    if (res.data.code === 200) {
-      if (res.data.msg === "登录成功") {
-        const responseData = res.data.data;
+    if (loginData.data.code === 200) {
+      if (loginData.data.msg === "登录成功") {
+        const responseData = loginData.data.data;
         const name = responseData.name;
-        const Token = responseData.Token;
+        const token = responseData.token;
         localStorage.setItem("name", name);
-        localStorage.setItem("Token", Token);
-        console.log(name + "登录成功,Token:" + Token);
+        localStorage.setItem("token", token);
+        ElMessage({
+          message: "亲爱的" + name + ",欢迎回来！",
+          type: 'success',
+        });
+        console.log("Token:" + token);
+        // 获取用户信息
+        console.log("发送请求：获取用户信息");
+        const UserData = await userService.getBasicPersonalInformation();
+        console.log("请求成功");
+        console.log(UserData);
+        newLoginStore.setLogin(true);
+        newUserStore.setUserInfo(UserData.data.data.user_info);
       } else {
-        console.log(res.data.msg);
+        ElMessage.error(loginData.data.msg);
       }
     }
   }
@@ -46,7 +58,6 @@
         <el-input
           v-model="account"
           placeholder="Username"
-          clearable
         >
           <template #prefix>
             <el-icon class="el-input__icon"><User /></el-icon>
@@ -60,7 +71,6 @@
           v-model="password"
           type="password"
           placeholder="Password"
-          show-password
         >
           <template #prefix>
             <el-icon class="el-input__icon"><Lock /></el-icon>

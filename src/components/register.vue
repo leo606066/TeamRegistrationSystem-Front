@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { reactive, ref } from 'vue'
-  import type { FormInstance, FormRules } from 'element-plus'
+  import type { FormInstance, FormRules, ElMessage } from 'element-plus'
   import router from "../routers";
   import userService from '../apis/userService'
 
@@ -115,7 +115,7 @@
         console.log(responseData);
         router.push("/login");
       } else {
-        console.log(res.data.msg);
+        ElMessage.error(res.data.msg);
       }
     }
   }
@@ -124,10 +124,10 @@
     if (!formEl) return
     formEl.validate((valid) => {
       if (valid) {
-        console.log('提交')
+        // console.log('提交')
         submit();
       } else {
-        console.log('错误提交')
+        // console.log('错误提交')
         return false
       }
     })

@@ -1,6 +1,14 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import userService from '../apis/userService';
+  import loginStore from '../stores/loginStore.ts';
+  import userStore from '../stores/userStore.ts';
+  import { storeToRefs } from 'pinia';
+
+  
+  const newLoginStore = loginStore();
+  const newUserStore = userStore();
+  const { loginSession } = storeToRefs(newLoginStore);
 
   const account = ref('');
   const password = ref('');
@@ -11,13 +19,19 @@
       password: password.value
     });
 
+    console.log("发送请求");
     const res = await userService.login(loginInfo.value);
+    console.log("请求成功");
+    console.log(res);
 
     if (res.data.code === 200) {
       if (res.data.msg === "登录成功") {
         const responseData = res.data.data;
-        const UID = responseData.user_id;
-        console.log(UID);
+        const name = responseData.name;
+        const Token = responseData.Token;
+        localStorage.setItem("name", name);
+        localStorage.setItem("Token", Token);
+        console.log(name + "登录成功,Token:" + Token);
       } else {
         console.log(res.data.msg);
       }

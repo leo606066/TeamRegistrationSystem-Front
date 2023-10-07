@@ -1,17 +1,18 @@
 <script setup lang="ts">
   import { reactive, ref } from 'vue'
   import type { FormInstance, FormRules } from 'element-plus'
+  import router from "../routers";
   import userService from '../apis/userService'
 
   const registerFormRef = ref<FormInstance>()
 
   const validateName = (rule: any, value: any, callback: any) => {
-    var NameRegularExpression = /^[\w\s\p{Han}]{1,25}$/
+    var NameRegularExpression = /^[\w\s\u4E00-\u9FA5]{1,25}$/
     if (value === '') {
-      callback(new Error('Please input the name'))
+      callback(new Error('请输入昵称'))
     } else {
       if (!NameRegularExpression.test(value)) {
-        callback(new Error('Name is invalidated'))
+        callback(new Error('昵称格式错误'))
       }
       callback()
     }
@@ -20,10 +21,10 @@
   const validatePhone = (rule: any, value: any, callback: any) => {
     var EmailRegularExpression = /^1[3456789]\d{9}$/
     if (value === '') {
-      callback(new Error('Please input the Phone number'))
+      callback(new Error('请输入电话号码'))
     } else {
       if (!EmailRegularExpression.test(value)) {
-        callback(new Error('Phone number is invalidated'))
+        callback(new Error('电话号码格式错误'))
       }
       callback()
     }
@@ -32,10 +33,10 @@
   const validateEmail = (rule: any, value: any, callback: any) => {
     var EmailRegularExpression = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/
     if (value === '') {
-      callback(new Error('Please input the E-mail address'))
+      callback(new Error('请输入电子邮箱'))
     } else {
       if (!EmailRegularExpression.test(value)) {
-        callback(new Error('E-mail address is invalidated'))
+        callback(new Error('电子邮箱格式错误'))
       }
       callback()
     }
@@ -44,9 +45,9 @@
   const validatePass = (rule: any, value: any, callback: any) => {
     var PasswordRegularExpression = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z -~]{8,25}$/
     if (value === '') {
-      callback(new Error('Please input the password'))
+      callback(new Error('请输入密码'))
     } else if (!PasswordRegularExpression.test(value)) {
-      callback(new Error('Password is invalidated'))
+      callback(new Error('密码格式错误'))
     } else {
       if (registerForm.repassword !== '') {
         if (!registerFormRef.value) return
@@ -58,9 +59,9 @@
   
   const validatePass2 = (rule: any, value: any, callback: any) => {
     if (value === '') {
-      callback(new Error('Please input the password again'))
+      callback(new Error('请确认密码'))
     } else if (value !== registerForm.password) {
-      callback(new Error("Two inputs don't match!"))
+      callback(new Error("两次密码输入不一致"))
     } else {
       callback()
     }
@@ -81,7 +82,6 @@
     ],
     phone:[
       { required: true, message: 'Phone is required' },
-      { type: 'number', message: 'Phone must be a number' },
       { validator: validatePhone, trigger: 'blur' }
     ],
     email:[
@@ -105,28 +105,29 @@
       email: registerForm.email,
       password: registerForm.password,
     })
-
+    // console.log(userInfo);
+    // console.log("发送请求");
     const res = await userService.register(userInfo.value);
-
+    // console.log("请求成功");
     if (res.data.code === 200) {
-      if (res.data.msg === "注册成功") {
+      if (res.data.msg === "OK") {
         const responseData = res.data.data;
-        const UID = responseData.user_id;
-        console.log(UID);
+        console.log(responseData);
+        router.push("/login");
       } else {
         console.log(res.data.msg);
       }
     }
   }
 
-  const submitForm = (formEl: FormInstance | undefined) => {
+  const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
       if (valid) {
-        console.log('submit!')
+        console.log('提交')
         submit();
       } else {
-        console.log('error submit!')
+        console.log('错误提交')
         return false
       }
     })
@@ -155,7 +156,7 @@
         <el-input v-model="registerForm.name" />
       </el-form-item>
       <el-form-item label="电话" prop="phone">
-        <el-input v-model.number="registerForm.phone" />
+        <el-input v-model="registerForm.phone" />
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="registerForm.email" />

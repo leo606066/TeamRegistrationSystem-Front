@@ -8,7 +8,6 @@ export interface registerInfo {
     phone: string,
     email: string,
     password: string,
-    repassword: string,
 }
 
 export interface userInfo {

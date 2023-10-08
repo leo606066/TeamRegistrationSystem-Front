@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <el-container class="app">
+  <el-container>
     <el-header>
       <HeaderVue :style="{ zIndex: 1 }" />
     </el-header>

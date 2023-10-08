@@ -4,7 +4,8 @@
 </script>
 
 <template>
-  <el-container class="app">
+  <div id="background"></div>
+  <el-container>
     <el-header>
       <HeaderVue />
     </el-header>
@@ -18,15 +19,13 @@
 </template>
 
 <style scoped>
-#background {
-  width: 100%;
-  height: 100%;
-  /* 设置背景图片 */
-  background-image: url('./assets/background.png');
-  /* 设置背景颜色 */
-  background-color: #f0f0f0;
-  /* 设置背景大小和平铺方式 */
-  background-size: cover;
-  background-repeat: no-repeat;
+.el-container {
+  flex: 1;
+}
+.el-header {
+  z-index: 1;
+}
+.el-main {
+  z-index: 0;
 }
 </style>

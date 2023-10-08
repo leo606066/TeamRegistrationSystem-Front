@@ -31,6 +31,7 @@ const pushToRegister = () => {
       :ellipsis="false"
       router
     >
+      &ensp;
       <el-menu-item index="/">
         <el-icon><House /></el-icon>
         <span>首页</span>
@@ -57,11 +58,12 @@ const pushToRegister = () => {
         </el-button>
       </div>
       <div v-show="loginSession" :key="2" class="userStatus">
-        <el-icon><Bell /></el-icon>
-        &ensp;
-        &ensp;
-        &ensp;
-        <el-avatar src="{{ avatar }}"/>
+        <el-menu-item>
+          <el-icon><Bell /></el-icon>
+        </el-menu-item>
+        <el-menu-item>
+          <el-avatar :src="userSession.avatar"></el-avatar>
+        </el-menu-item>
       </div>
       &ensp;
     </el-menu>
@@ -90,6 +92,12 @@ const pushToRegister = () => {
   width: 20%;
 }
 .userStatus {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-menu-item {
   position: relative;
   display: flex;
   align-items: center;

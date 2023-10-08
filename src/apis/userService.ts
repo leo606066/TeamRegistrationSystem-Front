@@ -8,7 +8,7 @@ export default class userService {
                 "content-Type": "application/json"
             },
             method: "post",
-            url: "/login",
+            url: "/api/login",
             data: data
         });
     }
@@ -19,7 +19,7 @@ export default class userService {
                 "content-Type": "application/json"
             },
             method: "post",
-            url: "/reg",
+            url: "/api/reg",
             data: data
         });
     }

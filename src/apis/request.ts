@@ -9,7 +9,7 @@ const request = (config: object) => {
     const token = localStorage.getItem("token");
 
     if (token) {
-        instance.defaults.headers.common["Authorization"] = `bearer ${token}`;
+        instance.defaults.headers.common["Authorization"] = `${token}`;
     }
 
     return instance(config);

@@ -27,21 +27,23 @@
 
     if (loginData.data.code === 200) {
       if (loginData.data.msg === "登录成功") {
-        const responseData = loginData.data.data;
-        const name = responseData.name;
-        const token = responseData.token;
+        const responseLoginData = loginData.data.data;
+        const name = responseLoginData.name;
+        const token = responseLoginData.token;
         localStorage.setItem("name", name);
         localStorage.setItem("token", token);
         ElMessage({
           message: "亲爱的" + name + ",欢迎回来！",
           type: 'success',
         });
-        console.log("Token:" + token);
+
         // 获取用户信息
+
         console.log("发送请求：获取用户信息");
         const UserData = await userService.getBasicPersonalInformation();
         console.log("请求成功");
         console.log(UserData);
+
         newLoginStore.setLogin(true);
         newUserStore.setUserInfo(UserData.data.data.user_info);
       } else {

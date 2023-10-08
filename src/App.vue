@@ -19,6 +19,8 @@
 
 <style scoped>
 #background {
+  width: 100%;
+  height: 100%;
   /* 设置背景图片 */
   background-image: url('./assets/background.png');
   /* 设置背景颜色 */

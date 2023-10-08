@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import router from '../routers/index';
   import userService from '../apis/userService';
   import loginStore from '../stores/loginStore';
   import userStore from '../stores/userStore';
@@ -33,12 +34,11 @@
         localStorage.setItem("name", name);
         localStorage.setItem("token", token);
         ElMessage({
-          message: "亲爱的" + name + ",欢迎回来！",
+          message: "亲爱的" + name + "，欢迎回来！",
           type: 'success',
         });
 
         // 获取用户信息
-
         console.log("发送请求：获取用户信息");
         const UserData = await userService.getBasicPersonalInformation();
         console.log("请求成功");
@@ -46,6 +46,7 @@
 
         newLoginStore.setLogin(true);
         newUserStore.setUserInfo(UserData.data.data.user_info);
+        router.push("/");
       } else {
         ElMessage.error(loginData.data.msg);
       }

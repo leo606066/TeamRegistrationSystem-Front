@@ -1,5 +1,5 @@
 import request from "./request";
-import { loginInfo, registerInfo, userInfo } from "../types/personalInfo";
+import { loginInfo, registerInfo } from "../types/personalInfo";
 
 export default class userService {
     static async login(data: loginInfo) : Promise<any> {
@@ -8,7 +8,7 @@ export default class userService {
                 "content-Type": "application/json"
             },
             method: "post",
-            url: "/api/login",
+            url: "/login",
             data: data
         });
     }
@@ -19,7 +19,7 @@ export default class userService {
                 "content-Type": "application/json"
             },
             method: "post",
-            url: "/api/reg",
+            url: "/reg",
             data: data
         });
     }

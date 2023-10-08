@@ -14,8 +14,9 @@
 <style scoped>
 .foot_div {
   position: absolute;
-  left: 2%;
-  right: 2%;
-  bottom: 2%;
+  background-color: #f9f6fa;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 </style>

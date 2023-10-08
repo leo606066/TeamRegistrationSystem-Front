@@ -14,6 +14,11 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  // 关闭自动填充
+  build: {
+    polyfillDynamicImport: false
+  },
+  // 设置 vite proxy
   server: {
     proxy: {
       "/api": "http://47.115.209.120:8080",

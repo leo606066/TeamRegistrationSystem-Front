@@ -11,6 +11,9 @@ const newUserStore = userStore();
 const { loginSession } = storeToRefs(newLoginStore);
 const { userSession } = storeToRefs(newUserStore);
 
+const name = ref(localStorage.getItem("name"));
+const avatar = ref(localStorage.getItem("avatar"));
+
 const input = ref('');
 
 const pushToLogin = () => {
@@ -19,6 +22,27 @@ const pushToLogin = () => {
 
 const pushToRegister = () => {
   router.push("/register");
+};
+
+const pushToProfile = () => {
+  router.push("/profile");
+};
+
+const pushToOut = () => {
+  localStorage.clear();
+  sessionStorage.clear();
+  loginSession.value = false;
+  userSession.value = {
+    user_id: -1,
+    name: "Not Logged In",
+    phone: "Not Logged In",
+    email: "Not Logged In",
+    birthday: "Not Logged In",
+    address: "Not Logged In",
+    motto: "Not Logged In",
+    avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+  };
+  router.push("/Login");
 };
 </script>
 
@@ -38,6 +62,7 @@ const pushToRegister = () => {
       </el-menu-item>
       <div class="flex-grow" />
       <el-input
+        v-show="loginSession"
         v-model="input"
         placeholder="Search"
         class="search"
@@ -59,10 +84,18 @@ const pushToRegister = () => {
       </div>
       <div v-show="loginSession" :key="2" class="userStatus">
         <el-menu-item>
-          <el-icon><Bell /></el-icon>
+          <el-icon><Bell /></el-icon>消息
         </el-menu-item>
         <el-menu-item>
-          <el-avatar :src="userSession.avatar"></el-avatar>
+          <el-dropdown>
+            <el-avatar :src="avatar"></el-avatar>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="pushToProfile"><el-icon><User /></el-icon>{{ name }}</el-dropdown-item>
+                <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </el-menu-item>
       </div>
       &ensp;

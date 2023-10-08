@@ -3,13 +3,13 @@
   import router from '../routers/index';
   import userService from '../apis/userService';
   import loginStore from '../stores/loginStore';
-  import userStore from '../stores/userStore';
+  // import userStore from '../stores/userStore';
   import { ElMessage } from 'element-plus'
   // import { storeToRefs } from 'pinia';
   // import { userInfo } from '../types/personalInfo';
   
   const newLoginStore = loginStore();
-  const newUserStore = userStore();
+  // const newUserStore = userStore();
 
   const account = ref('');
   const password = ref('');
@@ -23,29 +23,28 @@
 
     console.log("发送请求：登录");
     const loginData = await userService.login(loginInfo.value);
-    console.log("请求成功");
-    console.log(loginData);
+    console.log("请求成功，获得数据：", loginData);
 
     if (loginData.data.code === 200) {
       if (loginData.data.msg === "登录成功") {
         const responseLoginData = loginData.data.data;
         const name = responseLoginData.name;
         const token = responseLoginData.token;
+        const avatar = responseLoginData.avatar;
         localStorage.setItem("name", name);
         localStorage.setItem("token", token);
+        localStorage.setItem("avatar", avatar);
         ElMessage({
           message: "亲爱的" + name + "，欢迎回来！",
           type: 'success',
         });
-
         // 获取用户信息
-        console.log("发送请求：获取用户信息");
-        const UserData = await userService.getBasicPersonalInformation();
-        console.log("请求成功");
-        console.log(UserData);
-
+        // console.log("发送请求：获取用户信息");
+        // const UserData = await userService.getBasicPersonalInformation();
+        // console.log("请求成功");
+        // console.log(UserData);
+        // newUserStore.setUserInfo(UserData.data.data.user_info);
         newLoginStore.setLogin(true);
-        newUserStore.setUserInfo(UserData.data.data.user_info);
         router.push("/");
       } else {
         ElMessage.error(loginData.data.msg);
@@ -87,7 +86,7 @@
     <el-button type="primary" @click="login">登录</el-button>
   </el-card>
   <el-card>
-    <el-row justify="center" align="center" :gutter="20">
+    <el-row justify="center" :gutter="20">
       <el-col :span="50">
         <el-text>
             New User?

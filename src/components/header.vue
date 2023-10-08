@@ -11,8 +11,8 @@ const newUserStore = userStore();
 const { loginSession } = storeToRefs(newLoginStore);
 const { userSession } = storeToRefs(newUserStore);
 
-const name = ref(localStorage.getItem("name"));
-const avatar = ref(localStorage.getItem("avatar"));
+const name = localStorage.getItem("name");
+const avatar = localStorage.getItem("avatar");
 
 const input = ref('');
 

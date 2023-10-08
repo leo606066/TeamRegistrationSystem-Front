@@ -37,7 +37,7 @@ const pushToOut = () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="header_div">
     <el-menu
       class="top-nav"
       :default-active="$route.path"
@@ -94,7 +94,7 @@ const pushToOut = () => {
 </template>
 
 <style scoped>
-.container {
+.header_div {
   display: flex;
   position: fixed;
   left: 0;

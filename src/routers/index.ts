@@ -8,22 +8,34 @@ const routes = [
     {
         path: "/",
         name: "Home",
-        component: HomeVue
+        component: HomeVue,
+        meta: {
+          title: '首页',
+        },
     },
     {
         path: "/login",
         name: "Login",
-        component: LoginVue
+        component: LoginVue,
+        meta: {
+          title: '用户登录',
+        },
     },
     {
         path: "/register",
         name: "Register",
-        component: RegisterVue
+        component: RegisterVue,
+        meta: {
+          title: '用户注册',
+        },
     },
     {
         path: "/profile",
         name: "Profile",
-        component: ProfileVue
+        component: ProfileVue,
+        meta: {
+          title: '个人首页',
+        },
     }
 ];
 

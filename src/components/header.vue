@@ -20,8 +20,8 @@ const pushToRegister = () => {
   router.push("/register");
 };
 
-const pushToProfile = () => {
-  router.push("/profile");
+const pushToProfileEditor = () => {
+  router.push("/profileEditor");
 };
 
 const pushToOut = () => {
@@ -76,13 +76,13 @@ const pushToOut = () => {
         <el-menu-item>
           <el-icon><Bell /></el-icon>消息
         </el-menu-item>
-        <el-menu-item>
+        <el-menu-item @click="pushToProfile">
           <el-dropdown>
             <el-avatar :src="userSession.avatar"></el-avatar>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item @click="pushToProfile"><el-icon><User /></el-icon>{{ userSession.name }}</el-dropdown-item>
-                <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出</el-dropdown-item>
+                <el-dropdown-item @click="pushToProfileEditor"><el-icon><User /></el-icon>修改信息</el-dropdown-item>
+                <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>

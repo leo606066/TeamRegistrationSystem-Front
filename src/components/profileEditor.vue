@@ -1,15 +1,29 @@
 <script lang="ts" setup>
-  import { reactive, ref, onMounted } from 'vue'
-  import type { FormInstance, FormRules, ElMessage } from 'element-plus'
-  import { userCompeleteInfo } from '../types/personalInfo'
-  import userService from '../apis/userService'
+  import imageUploader from './imageUploader.vue';
+
+  import { reactive, ref, onMounted } from 'vue';
+  import type { FormInstance, FormRules, ElMessage } from 'element-plus';
+  import { userCompeleteInfo } from '../types/personalInfo';
+  import userService from '../apis/userService';
+  import loginStore from '../stores/loginStore.ts';
+  import userStore from '../stores/userStore.ts';
+  import { storeToRefs } from 'pinia';
+
+  const newLoginStore = loginStore();
+  const newUserStore = userStore();
+  const { loginSession } = storeToRefs(newLoginStore);
+  const { userSession } = storeToRefs(newUserStore);
 
   onMounted(() => {
+    if (!loginSession) {
+      ElMessage.error("请先登录");
+      return;
+    }
     uploadUserCompeleteInfo();
   });
 
-  const formSize = ref('default')
-  const ruleFormRef = ref<FormInstance>()
+  const formSize = ref('default');
+  const ruleFormRef = ref<FormInstance>();
   const ruleForm = ref<userCompeleteInfo>({
     name: '',
     phone: '',
@@ -20,38 +34,38 @@
   });
 
   const validateName = (rule: any, value: any, callback: any) => {
-    var NameRegularExpression = /^[\w\s\u4E00-\u9FA5]{1,25}$/
+    var NameRegularExpression = /^[\w\s\u4E00-\u9FA5]{1,25}$/;
     if (value === '') {
-      callback(new Error('请输入昵称'))
+      callback(new Error('请输入昵称'));
     } else {
       if (!NameRegularExpression.test(value)) {
-        callback(new Error('昵称格式错误'))
+        callback(new Error('昵称格式错误'));
       }
-      callback()
+      callback();
     }
   }
 
   const validatePhone = (rule: any, value: any, callback: any) => {
-    var EmailRegularExpression = /^1[3456789]\d{9}$/
+    var EmailRegularExpression = /^1[3456789]\d{9}$/;
     if (value === '') {
-      callback(new Error('请输入电话号码'))
+      callback(new Error('请输入电话号码'));
     } else {
       if (!EmailRegularExpression.test(value)) {
-        callback(new Error('电话号码格式错误'))
+        callback(new Error('电话号码格式错误'));
       }
-      callback()
+      callback();
     }
   }
 
   const validateEmail = (rule: any, value: any, callback: any) => {
     var EmailRegularExpression = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/
     if (value === '') {
-      callback(new Error('请输入电子邮箱'))
+      callback(new Error('请输入电子邮箱'));
     } else {
       if (!EmailRegularExpression.test(value)) {
-        callback(new Error('电子邮箱格式错误'))
+        callback(new Error('电子邮箱格式错误'));
       }
-      callback()
+      callback();
     }
   }
 
@@ -82,22 +96,22 @@
     motto: [
       { required: true, message: '请输入个人签名', trigger: 'blur' },
     ],
-  })
+  });
 
   const uploadUserCompeleteInfo = async () => {
-    // console.log("请求数据：获得个人基本信息");
-    const res = await userService.getBasicPersonalInformation();
-    // console.log("请求成功，获得数据:", res);
+    console.log("请求数据：获得个人基本信息");
+    const res = await userService.getBasicPersonalInformation(userSession.value.name);
+    console.log("请求成功，获得数据:", res);
 
     if (res.data.code === 200) {
       if (res.data.msg === 'OK') {
         const responseData = res.data.data.user_info;
-        ruleForm.value.name = responseData.name
-        ruleForm.value.phone = responseData.phone
-        ruleForm.value.email = responseData.email
-        ruleForm.value.birthday = responseData.birthday
-        ruleForm.value.address = responseData.address
-        ruleForm.value.motto = responseData.motto
+        ruleForm.value.name = responseData.name;
+        ruleForm.value.phone = responseData.phone;
+        ruleForm.value.email = responseData.email;
+        ruleForm.value.birthday = responseData.birthday;
+        ruleForm.value.address = responseData.address;
+        ruleForm.value.motto = responseData.motto;
       } else {
         ElMessage.error(res.data.msg);
       }
@@ -117,13 +131,13 @@
   }
   
   const submitForm = async (formEl: FormInstance | undefined) => {
-    if (!formEl) return
-    await formEl.validate((valid, fields) => {
+    if (!formEl) return;
+    await formEl.validate((valid) => {
       if (valid) {
-        console.log('submit!')
+        // console.log('submit!')
         submit();
       } else {
-        console.log('error submit!', fields)
+        // console.log('error submit!')
       }
     })
   }
@@ -131,6 +145,7 @@
 
 <template>
   <h3>更新个人信息</h3>
+  <imageUploader />
   <br />
   <el-form
     ref="ruleFormRef"

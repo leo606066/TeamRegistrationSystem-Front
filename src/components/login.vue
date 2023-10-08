@@ -20,9 +20,9 @@
       password: password.value
     });
 
-    // console.log("发送请求：登录");
+    console.log("发送请求：登录");
     const loginData = await userService.login(loginInfo.value);
-    // console.log("请求成功，获得数据：", loginData);
+    console.log("请求成功，获得数据：", loginData);
 
     if (loginData.data.code === 200) {
       if (loginData.data.msg === "登录成功") {

@@ -24,14 +24,16 @@ export default class userService {
         });
     }
 
-    static async getBasicPersonalInformation() : Promise<any> {
+    static async getBasicPersonalInformation(name : string) : Promise<any> {
         return request({
             "headers": {
                 "content-Type": "application/json"
             },
             method: "get",
             url: "/api/user/info",
-            data: {},
+            params: {
+                name : name,
+            },
         });
     }
 

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeVue from "../pages/Home.vue";
 import LoginVue from "../pages/Login.vue";
 import RegisterVue from "../pages/Register.vue";
-import ProfileVue from "../pages/Profile.vue";
+import ProfileEditorVue from "../pages/ProfileEditor.vue";
 
 const routes = [
     {
@@ -30,11 +30,11 @@ const routes = [
         },
     },
     {
-        path: "/profile",
+        path: "/profileEditor",
         name: "Profile",
-        component: ProfileVue,
+        component: ProfileEditorVue,
         meta: {
-          title: '个人首页',
+          title: '修改个人信息',
         },
     }
 ];

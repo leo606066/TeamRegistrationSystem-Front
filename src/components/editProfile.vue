@@ -71,22 +71,23 @@
     birthday: [
       {
         type: 'date',
-        required: false,
+        message: '请输入出生日期',
+        required: true,
         trigger: 'change',
       },
     ],
     address: [
-      { required: false, trigger: 'blur' },
+      { required: true, message: '请输入居住地址', trigger: 'blur' },
     ],
     motto: [
-      { required: false, trigger: 'blur' },
+      { required: true, message: '请输入个人签名', trigger: 'blur' },
     ],
   })
 
   const uploadUserCompeleteInfo = async () => {
-    console.log("请求数据：获得个人基本信息");
+    // console.log("请求数据：获得个人基本信息");
     const res = await userService.getBasicPersonalInformation();
-    console.log("请求成功，获得数据:", res);
+    // console.log("请求成功，获得数据:", res);
 
     if (res.data.code === 200) {
       if (res.data.msg === 'OK') {
@@ -104,12 +105,12 @@
   }
 
   const submit = async () => {
-    console.log(ruleForm);
-    console.log("发送请求");
+    // console.log(ruleForm);
+    // console.log("发送请求");
     const res = await userService.putBasicPersonalInformation(ruleForm.value);
-    console.log("请求成功，获得数据", res);
+    // console.log("请求成功，获得数据", res);
     if (res.data.code === 200) {
-      if (res.data.msg !== "OK") {
+      if (res.data.msg != "OK") {
         ElMessage.error(res.data.msg);
       }
     }

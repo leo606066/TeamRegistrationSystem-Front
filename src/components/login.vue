@@ -109,7 +109,7 @@
 }
 .el-card {
   opacity: 0.95;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .el-card:last-child {
   margin-bottom: 0;

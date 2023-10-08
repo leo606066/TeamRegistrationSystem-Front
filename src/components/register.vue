@@ -77,23 +77,23 @@
 
   const rules = reactive<FormRules<typeof registerForm>>({
     name:[
-      { required: true, message: 'Name is required' },
+      { required: true, message: '请输入昵称' },
       { validator: validateName, trigger: 'blur' }
     ],
     phone:[
-      { required: true, message: 'Phone is required' },
+      { required: true, message: '请输入电话号码' },
       { validator: validatePhone, trigger: 'blur' }
     ],
     email:[
-      { required: true, message: 'E-mail is required' },
+      { required: true, message: '请输入电子邮箱' },
       { validator: validateEmail, trigger: 'blur' }
     ],
     password: [
-      { required: true, message: 'Password is required' },
+      { required: true, message: '请输入密码' },
       { validator: validatePass, trigger: 'blur' }
     ],
     repassword: [
-      { required: true, message: 'Retry password is required' },
+      { required: true, message: '请确认密码' },
       { validator: validatePass2, trigger: 'blur' }
     ],
   })
@@ -196,7 +196,8 @@
 
 <style scoped>
 .el-card {
-  margin-bottom: 10px;
+  opacity: 0.95;
+  margin-bottom: 5px;
 }
 .el-card:last-child {
   margin-bottom: 0;

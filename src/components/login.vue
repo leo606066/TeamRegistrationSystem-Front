@@ -89,9 +89,8 @@
     <el-row justify="center" :gutter="20">
       <el-col :span="50">
         <el-text>
-            New User?
-            &nbsp
-            <el-link :underline="false" type="primary" href="/register">Register</el-link>
+            新用户？
+            <el-link :underline="false" type="primary" href="/register">注册</el-link>
         </el-text>
       </el-col>
     </el-row>
@@ -109,12 +108,13 @@
   border-radius: 4px;
 }
 .el-card {
+  opacity: 0.95;
   margin-bottom: 10px;
 }
 .el-card:last-child {
   margin-bottom: 0;
 }
 .el-link {
-    margin-top: -3.8px;
+    margin-top: -2px;
 }
 </style>

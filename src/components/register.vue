@@ -185,9 +185,9 @@
     <el-row justify="center" align="center" :gutter="20">
       <el-col :span="50">
         <el-text>
-            Already have an account?
+            已有帐户？
             &nbsp
-            <el-link :underline="false" type="primary" href="/login">Login</el-link>
+            <el-link :underline="false" type="primary" href="/login">登录</el-link>
         </el-text>
       </el-col>
     </el-row>

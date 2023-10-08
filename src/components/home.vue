@@ -16,7 +16,6 @@
 
 <style scoped>
   .el-card {
-    width: 480px;
     margin-bottom: 10px;
   }
   .el-card:last-child {

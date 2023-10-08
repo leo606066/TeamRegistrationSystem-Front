@@ -124,10 +124,8 @@
     if (!formEl) return
     formEl.validate((valid) => {
       if (valid) {
-        // console.log('提交')
         submit();
       } else {
-        // console.log('错误提交')
         return false
       }
     })
@@ -142,7 +140,7 @@
 <template>
   <el-card class="ep-bg-purple" >
     <el-text size="large" tag="b" type="info">注册新用户</el-text>
-  <br />
+    <br />
     <el-icon size="150px"><Avatar /></el-icon>
     <el-form
       ref="registerFormRef"

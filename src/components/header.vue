@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import router from "../routers";
-import { Search } from '@element-plus/icons-vue';
 import loginStore from '../stores/loginStore.ts';
 import userStore from '../stores/userStore.ts';
 import { storeToRefs } from 'pinia';
@@ -10,9 +9,6 @@ const newLoginStore = loginStore();
 const newUserStore = userStore();
 const { loginSession } = storeToRefs(newLoginStore);
 const { userSession } = storeToRefs(newUserStore);
-
-const name = localStorage.getItem("name");
-const avatar = localStorage.getItem("avatar");
 
 const input = ref('');
 
@@ -33,13 +29,7 @@ const pushToOut = () => {
   sessionStorage.clear();
   loginSession.value = false;
   userSession.value = {
-    user_id: -1,
     name: "Not Logged In",
-    phone: "Not Logged In",
-    email: "Not Logged In",
-    birthday: "Not Logged In",
-    address: "Not Logged In",
-    motto: "Not Logged In",
     avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
   };
   router.push("/Login");
@@ -88,10 +78,10 @@ const pushToOut = () => {
         </el-menu-item>
         <el-menu-item>
           <el-dropdown>
-            <el-avatar :src="avatar"></el-avatar>
+            <el-avatar :src="userSession.avatar"></el-avatar>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item @click="pushToProfile"><el-icon><User /></el-icon>{{ name }}</el-dropdown-item>
+                <el-dropdown-item @click="pushToProfile"><el-icon><User /></el-icon>{{ userSession.name }}</el-dropdown-item>
                 <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出</el-dropdown-item>
               </el-dropdown-menu>
             </template>

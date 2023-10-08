@@ -3,13 +3,12 @@
   import router from '../routers/index';
   import userService from '../apis/userService';
   import loginStore from '../stores/loginStore';
-  // import userStore from '../stores/userStore';
-  import { ElMessage } from 'element-plus'
-  // import { storeToRefs } from 'pinia';
-  // import { userInfo } from '../types/personalInfo';
+  import userStore from '../stores/userStore';
+  import { ElMessage } from 'element-plus';
+  import { userInfo } from '../types/personalInfo';
   
   const newLoginStore = loginStore();
-  // const newUserStore = userStore();
+  const newUserStore = userStore();
 
   const account = ref('');
   const password = ref('');
@@ -28,23 +27,18 @@
     if (loginData.data.code === 200) {
       if (loginData.data.msg === "登录成功") {
         const responseLoginData = loginData.data.data;
-        const name = responseLoginData.name;
+        const user : userInfo = {
+          name: responseLoginData.name,
+          avatar: responseLoginData.avatar,
+        };
         const token = responseLoginData.token;
-        const avatar = responseLoginData.avatar;
-        localStorage.setItem("name", name);
         localStorage.setItem("token", token);
-        localStorage.setItem("avatar", avatar);
+        newLoginStore.setLogin(true);
+        newUserStore.setUserInfo(user);
         ElMessage({
-          message: "亲爱的" + name + "，欢迎回来！",
+          message: "亲爱的" + user.name + "，欢迎回来！",
           type: 'success',
         });
-        // 获取用户信息
-        // console.log("发送请求：获取用户信息");
-        // const UserData = await userService.getBasicPersonalInformation();
-        // console.log("请求成功");
-        // console.log(UserData);
-        // newUserStore.setUserInfo(UserData.data.data.user_info);
-        newLoginStore.setLogin(true);
         router.push("/");
       } else {
         ElMessage.error(loginData.data.msg);

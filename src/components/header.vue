@@ -6,8 +6,8 @@ import userStore from '../stores/userStore.ts';
 import { storeToRefs } from 'pinia';
 
 const newLoginStore = loginStore();
-const newUserStore = userStore();
 const { loginSession } = storeToRefs(newLoginStore);
+const newUserStore = userStore();
 const { userSession } = storeToRefs(newUserStore);
 
 const input = ref('');
@@ -20,8 +20,8 @@ const pushToRegister = () => {
   router.push("/register");
 };
 
-const pushToProfile = () => {
-  router.push("/profile");
+const pushToProfileEditor = () => {
+  router.push("/profileEditor");
 };
 
 const pushToOut = () => {
@@ -37,7 +37,7 @@ const pushToOut = () => {
 </script>
 
 <template>
-  <div class="header_div">
+  <!-- <div class="header_div"> -->
     <el-menu
       class="top-nav"
       :default-active="$route.path"
@@ -78,11 +78,11 @@ const pushToOut = () => {
         </el-menu-item>
         <el-menu-item>
           <el-dropdown>
-            <el-avatar :src="userSession.avatar"></el-avatar>
+            <el-avatar :src="userSession.avatar" />
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item @click="pushToProfile"><el-icon><User /></el-icon>{{ userSession.name }}</el-dropdown-item>
-                <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出</el-dropdown-item>
+                <el-dropdown-item @click="pushToProfileEditor"><el-icon><User /></el-icon>修改信息</el-dropdown-item>
+                <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -90,17 +90,10 @@ const pushToOut = () => {
       </div>
       &ensp;
     </el-menu>
-  </div>
+  <!-- </div> -->
 </template>
 
 <style scoped>
-.header_div {
-  display: flex;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-}
 .flex-grow {
   flex-grow: 1;
 }

@@ -3,7 +3,6 @@
     import { ElMessage } from 'element-plus';
     import userService from '../apis/userService';
     import { userCompeleteInfo } from '../types/personalInfo';
-import { Female } from '@element-plus/icons-vue';
 
     const props = defineProps<{ name: string, avatar: string }>();
     const { name, avatar } = toRefs(props);
@@ -42,30 +41,28 @@ import { Female } from '@element-plus/icons-vue';
 </script>
 
 <template>
-    <el-avatar :src="avatar" @click="showProfile"></el-avatar>
-    <el-dialog v-model="dialogTableVisible" title="个人资料">
-        <div class="page">
-        <div class="banner">
-            <img src="../assets/background.jpg" alt="Banner" />
+  <el-avatar :src="avatar" @click="showProfile"></el-avatar>
+  <el-dialog v-model="dialogTableVisible" title="个人资料">
+    <div class="page">
+      <div class="banner">
+        <img src="../assets/background.jpg" alt="Banner" />
+      </div>
+      <div class="content">
+        <div class="profile">
+          <img :src="userInfo.avatar" alt="Avatar" />
+          <div class="name"> {{ userInfo.name }} </div>
+          <div class="title"> {{ userInfo.motto }} </div>
         </div>
-        <div class="content">
-            <div class="profile">
-                <img :src="userInfo.avatar" alt="Avatar" />
-                <div class="name"> {{ userInfo.name }} </div>
-                <div class="title">
-                    <el-icon>
-                        <Male />
-                    </el-icon>
-                    {{ userInfo.address }} 
-                    <el-icon>
-                        <Female />
-                    </el-icon>
-                </div>
-            </div>
-            <div class="description"> {{ userInfo.motto }} </div>
+        <div class="description">
+          <el-icon><Phone /></el-icon> {{ userInfo.phone }}
+          &nbsp
+          <el-icon><Message /></el-icon> {{ userInfo.email }}
+          &nbsp
+          <el-icon><HomeFilled /></el-icon> {{ userInfo.address }}
         </div>
-        </div>
-    </el-dialog>
+      </div>
+    </div>
+  </el-dialog>
 </template>
 
 <style scoped>
@@ -99,7 +96,7 @@ import { Female } from '@element-plus/icons-vue';
   }
   .description {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 30px auto;
     line-height: 30px;
     font-size: 16px;
   }

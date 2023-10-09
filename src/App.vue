@@ -23,7 +23,7 @@
   flex: 1;
 }
 .el-header {
-  z-index: 1;
+  z-index: 2;
   display: flex;
   position: fixed;
   left: 0;
@@ -31,10 +31,10 @@
   top: 0;
 }
 .el-main {
-  z-index: 0;
+  z-index: 1;
 }
 .el-footer {
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   position: absolute;
   left: 2%;

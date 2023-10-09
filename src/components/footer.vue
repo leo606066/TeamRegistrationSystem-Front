@@ -3,21 +3,21 @@
 </script>
 
 <template>
-  <el-divider content-position="center">@团队报名系统 2023.10</el-divider>
-  <el-descriptions :column="3" size="small">
-    <el-descriptions-item label="前端">
-      <el-link href="https://github.com/HerveyB3B4/TeamRegistrationSystem-Front">
-        hvのgit仓库
-      </el-link>
-    </el-descriptions-item>
-    <el-descriptions-item label="后端仓库">
-      <el-link href="https://github.com/Penryn/TeamRegistrationSystem-Back">
-        phlのgit仓库
-      </el-link>
-    </el-descriptions-item>
-  </el-descriptions>
+  <br><br><div class="foot_div">
+    <el-text>jh大作业@2023.10.1</el-text><br>
+    <el-link href="https://github.com/HerveyB3B4/TeamRegistrationSystem-Front">点击蕉♂流♂hvのgit仓库</el-link>
+  </div>
 </template>
 
 <style scoped>
 
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div {
+  padding: 10px;
+}
 </style>

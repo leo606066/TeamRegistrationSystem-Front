@@ -6,8 +6,8 @@ import userStore from '../stores/userStore.ts';
 import { storeToRefs } from 'pinia';
 
 const newLoginStore = loginStore();
-const newUserStore = userStore();
 const { loginSession } = storeToRefs(newLoginStore);
+const newUserStore = userStore();
 const { userSession } = storeToRefs(newUserStore);
 
 const input = ref('');
@@ -76,9 +76,9 @@ const pushToOut = () => {
         <el-menu-item>
           <el-icon><Bell /></el-icon>消息
         </el-menu-item>
-        <el-menu-item @click="pushToProfile">
+        <el-menu-item>
           <el-dropdown>
-            <el-avatar :src="userSession.avatar"></el-avatar>
+            <el-avatar :src="userSession.avatar" />
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item @click="pushToProfileEditor"><el-icon><User /></el-icon>修改信息</el-dropdown-item>

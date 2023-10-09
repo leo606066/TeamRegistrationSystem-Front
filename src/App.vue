@@ -34,9 +34,9 @@
   z-index: 0;
 }
 .el-footer {
-  z-index: 0;
+  z-index: -1;
   width: 100%;
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 2%;

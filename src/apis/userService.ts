@@ -1,5 +1,5 @@
 import request from "./request";
-import { loginInfo, registerInfo, userCompeleteInfo } from "../types/personalInfo";
+import { loginInfo, registerInfo, userSubmitInfo } from "../types/personalInfo";
 
 export default class userService {
     static async login(data: loginInfo) : Promise<any> {
@@ -38,7 +38,7 @@ export default class userService {
     }
 
     
-    static async putBasicPersonalInformation(data : userCompeleteInfo) : Promise<any> {
+    static async putBasicPersonalInformation(data : userSubmitInfo) : Promise<any> {
         return request({
             "headers": {
                 "content-Type": "application/json"

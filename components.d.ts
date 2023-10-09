@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AvatarAndProfile: typeof import('./src/components/avatarAndProfile.vue')['default']
+    Details: typeof import('./src/components/details.vue')['default']
     EditProfile: typeof import('./src/components/editProfile.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
@@ -21,6 +23,7 @@ declare module 'vue' {
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
     ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
@@ -43,6 +46,7 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSelectV2: typeof import('element-plus/es')['ElSelectV2']
+    ElStatistic: typeof import('element-plus/es')['ElStatistic']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTag: typeof import('element-plus/es')['ElTag']

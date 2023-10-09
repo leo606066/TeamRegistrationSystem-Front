@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-  import imageUploader from './imageUploader.vue';
+  // import imageUploader from './imageUploader.vue';
 
   import { reactive, ref, onMounted } from 'vue';
   import type { FormInstance, FormRules, ElMessage } from 'element-plus';
-  import { userCompeleteInfo } from '../types/personalInfo';
+  import { userSubmitInfo } from '../types/personalInfo';
   import userService from '../apis/userService';
   import loginStore from '../stores/loginStore.ts';
   import userStore from '../stores/userStore.ts';
@@ -14,17 +14,19 @@
   const { loginSession } = storeToRefs(newLoginStore);
   const { userSession } = storeToRefs(newUserStore);
 
+  // const dialogTableVisible = ref(false);
+
   onMounted(() => {
     if (!loginSession) {
       ElMessage.error("请先登录");
       return;
     }
-    uploadUserCompeleteInfo();
+    uploadUserInfo();
   });
 
   const formSize = ref('default');
   const ruleFormRef = ref<FormInstance>();
-  const ruleForm = ref<userCompeleteInfo>({
+  const ruleForm = ref<userSubmitInfo>({
     name: '',
     phone: '',
     email: '',
@@ -69,7 +71,7 @@
     }
   }
 
-  const rules = reactive<FormRules<userCompeleteInfo>>({
+  const rules = reactive<FormRules<userSubmitInfo>>({
     name:[
       { required: true, message: '请输入昵称' },
       { validator: validateName, trigger: 'blur' }
@@ -98,10 +100,10 @@
     ],
   });
 
-  const uploadUserCompeleteInfo = async () => {
-    console.log("请求数据：获得个人基本信息");
+  const uploadUserInfo = async () => {
+    // console.log("请求数据：获得个人基本信息");
     const res = await userService.getBasicPersonalInformation(userSession.value.name);
-    console.log("请求成功，获得数据:", res);
+    // console.log("请求成功，获得数据:", res);
 
     if (res.data.code === 200) {
       if (res.data.msg === 'OK') {
@@ -124,7 +126,13 @@
     const res = await userService.putBasicPersonalInformation(ruleForm.value);
     // console.log("请求成功，获得数据", res);
     if (res.data.code === 200) {
-      if (res.data.msg != "OK") {
+      if (res.data.msg === "OK") {
+        const newUserStore = userStore();
+        newUserStore.setUserInfo({
+          name : ruleForm.value.name,
+          avatar : userSession.value.avatar,
+        });
+      } else {
         ElMessage.error(res.data.msg);
       }
     }
@@ -145,8 +153,6 @@
 
 <template>
   <h3>更新个人信息</h3>
-  <imageUploader />
-  <br />
   <el-form
     ref="ruleFormRef"
     :model="ruleForm"
@@ -155,6 +161,13 @@
     :size="formSize"
     status-icon
   >
+    <el-avatar :src="userSession.avatar" :size="100" style="margin-bottom: 20px;"></el-avatar>
+    <!-- <el-form-item label="头像" prop="avatar">
+      <el-button text @click="dialogTableVisible = true">点击上传新头像</el-button>
+      <el-dialog v-model="dialogTableVisible" title="上传新头像">
+        <imageUploader />
+      </el-dialog>
+    </el-form-item> -->
     <el-form-item label="昵称" prop="name">
       <el-input v-model="ruleForm.name" />
     </el-form-item>
@@ -168,8 +181,7 @@
       <el-date-picker
           v-model="ruleForm.birthday"
           type="date"
-          label="Pick a date"
-          placeholder="Pick a date"
+          placeholder="选择日期"
           style="width: 100%"
       />
     </el-form-item>

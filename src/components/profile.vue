@@ -54,11 +54,11 @@
           <div class="title"> {{ userInfo.motto }} </div>
         </div>
         <div class="description">
-          <el-icon><Phone /></el-icon> {{ userInfo.phone }}
-          &nbsp
-          <el-icon><Message /></el-icon> {{ userInfo.email }}
-          &nbsp
-          <el-icon><HomeFilled /></el-icon> {{ userInfo.address }}
+          <el-icon><Phone /></el-icon><el-text size="large"> {{ userInfo.phone }} </el-text>
+          &nbsp;
+          <el-icon><Message /></el-icon><el-text size="large"> {{ userInfo.email }} </el-text>
+          &nbsp;
+          <el-icon><HomeFilled /></el-icon><el-text size="large"> {{ userInfo.address }} </el-text>
         </div>
       </div>
     </div>
@@ -80,8 +80,8 @@
     margin-top: -100px;
   }
   .profile img {
-    width: 200px;
-    height: 200px;
+    width: 150px; 
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
   }

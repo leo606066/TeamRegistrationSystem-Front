@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import RegisterVue from "../components/register.vue";
+  import RegisterVue from "../components/user/register.vue";
 </script>
 
 <template>

@@ -35,10 +35,9 @@
 }
 .el-footer {
   z-index: 0;
-  width: 100%;
   position: absolute;
   left: 2%;
   right: 2%;
-  bottom: 2%;
+  bottom: 0;
 }
 </style>

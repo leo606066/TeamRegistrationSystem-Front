@@ -1,52 +1,3 @@
-<script setup lang="ts">
-  import { ref } from 'vue';
-  import router from '../routers/index';
-  import userService from '../apis/userService';
-  import loginStore from '../stores/loginStore';
-  import userStore from '../stores/userStore';
-  import { ElMessage } from 'element-plus';
-  import { userInfo } from '../types/personalInfo';
-  
-  const newLoginStore = loginStore();
-  const newUserStore = userStore();
-
-  const account = ref('');
-  const password = ref('');
-  
-  const login = async () => {
-
-    const loginInfo = ref({
-      account: account.value,
-      password: password.value
-    });
-
-    // console.log("发送请求：登录");
-    const loginData = await userService.login(loginInfo.value);
-    // console.log("请求成功，获得数据：", loginData);
-
-    if (loginData.data.code === 200) {
-      if (loginData.data.msg === "登录成功") {
-        const responseLoginData = loginData.data.data;
-        const user : userInfo = {
-          name: responseLoginData.name,
-          avatar: responseLoginData.avatar,
-        };
-        const token = responseLoginData.token;
-        localStorage.setItem("token", token);
-        newLoginStore.setLogin(true);
-        newUserStore.setUserInfo(user);
-        ElMessage({
-          message: "亲爱的" + user.name + "，欢迎回来！",
-          type: 'success',
-        });
-        router.push("/");
-      } else {
-        ElMessage.error(loginData.data.msg);
-      }
-    }
-  }
-</script>
-
 <template>
   <el-card>
     <el-row justify="center" :gutter="10">
@@ -90,6 +41,55 @@
     </el-row>
   </el-card>
 </template>
+
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import router from '../../routers/index';
+  import userService from '../../apis/userService';
+  import loginStore from '../../stores/loginStore';
+  import userStore from '../../stores/userStore';
+  import { ElMessage } from 'element-plus';
+  import { userInfo } from '../../types/personalInfo';
+  
+  const newLoginStore = loginStore();
+  const newUserStore = userStore();
+
+  const account = ref('');
+  const password = ref('');
+  
+  const login = async () => {
+
+    const loginInfo = ref({
+      account: account.value,
+      password: password.value
+    });
+
+    // console.log("发送请求：登录");
+    const loginData = await userService.login(loginInfo.value);
+    // console.log("请求成功，获得数据：", loginData);
+
+    if (loginData.data.code === 200) {
+      if (loginData.data.msg === "登录成功") {
+        const responseLoginData = loginData.data.data;
+        const user : userInfo = {
+          name: responseLoginData.name,
+          avatar: responseLoginData.avatar,
+        };
+        const token = responseLoginData.token;
+        localStorage.setItem("token", token);
+        newLoginStore.setLogin(true);
+        newUserStore.setUserInfo(user);
+        ElMessage({
+          message: "亲爱的" + user.name + "，欢迎回来！",
+          type: 'success',
+        });
+        router.push("/");
+      } else {
+        ElMessage.error(loginData.data.msg);
+      }
+    }
+  }
+</script>
 
 <style scoped>
 .el-row {

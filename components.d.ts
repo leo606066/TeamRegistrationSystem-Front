@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AvatarUploader: typeof import('./src/components/avatarUploader.vue')['default']
+    AvatarUploader: typeof import('./src/components/user/avatarUploader.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -37,10 +37,10 @@ declare module 'vue' {
     Footer: typeof import('./src/components/footer.vue')['default']
     Header: typeof import('./src/components/header.vue')['default']
     Home: typeof import('./src/components/home.vue')['default']
-    Login: typeof import('./src/components/login.vue')['default']
-    Profile: typeof import('./src/components/profile.vue')['default']
-    ProfileEditor: typeof import('./src/components/profileEditor.vue')['default']
-    Register: typeof import('./src/components/register.vue')['default']
+    Login: typeof import('./src/components/user/login.vue')['default']
+    Profile: typeof import('./src/components/user/profile.vue')['default']
+    ProfileEditor: typeof import('./src/components/user/profileEditor.vue')['default']
+    Register: typeof import('./src/components/user/register.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

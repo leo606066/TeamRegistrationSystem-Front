@@ -1,12 +1,60 @@
+<template>
+  <h3>更新个人信息</h3>
+  <el-form
+    ref="ruleFormRef"
+    :model="ruleForm"
+    :rules="rules"
+    label-width="120px"
+    :size="formSize"
+    status-icon
+  >
+    <el-avatar :src="userSession.avatar" :size="100" style="margin-bottom: 20px;"></el-avatar>
+    <el-form-item label="头像" prop="avatar">
+      <el-button text @click="dialogTableVisible = true">点击上传新头像</el-button>
+      <el-dialog v-model="dialogTableVisible" title="上传新头像">
+        <avatarUploaderVue />
+      </el-dialog>
+    </el-form-item>
+    <el-form-item label="昵称" prop="name">
+      <el-input v-model="ruleForm.name" />
+    </el-form-item>
+    <el-form-item label="手机号码" prop="phone">
+      <el-input v-model="ruleForm.phone" />
+    </el-form-item>
+    <el-form-item label="邮箱地址" prop="email">
+      <el-input v-model="ruleForm.email" />
+    </el-form-item>
+    <el-form-item label="出生日期" prop="birthday">
+      <el-date-picker
+          v-model="ruleForm.birthday"
+          type="date"
+          placeholder="选择日期"
+          style="width: 100%"
+      />
+    </el-form-item>
+    <el-form-item label="居住地址" prop="address">
+      <el-input v-model="ruleForm.address" />
+    </el-form-item>
+    <el-form-item label="个性签名" prop="motto">
+      <el-input v-model="ruleForm.motto" type="textarea" />
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="submitForm(ruleFormRef)">
+        更新个人信息
+      </el-button>
+    </el-form-item>
+  </el-form>
+</template>
+
 <script lang="ts" setup>
   import avatarUploaderVue from './avatarUploader.vue';
 
   import { reactive, ref, onMounted } from 'vue';
   import type { FormInstance, FormRules, ElMessage } from 'element-plus';
-  import { userSubmitInfo } from '../types/personalInfo';
-  import userService from '../apis/userService';
-  import loginStore from '../stores/loginStore.ts';
-  import userStore from '../stores/userStore.ts';
+  import { userSubmitInfo } from '../../types/personalInfo';
+  import userService from '../../apis/userService';
+  import loginStore from '../../stores/loginStore.ts';
+  import userStore from '../../stores/userStore.ts';
   import { storeToRefs } from 'pinia';
 
   const newLoginStore = loginStore();
@@ -150,51 +198,3 @@
     })
   }
 </script>
-
-<template>
-  <h3>更新个人信息</h3>
-  <el-form
-    ref="ruleFormRef"
-    :model="ruleForm"
-    :rules="rules"
-    label-width="120px"
-    :size="formSize"
-    status-icon
-  >
-    <el-avatar :src="userSession.avatar" :size="100" style="margin-bottom: 20px;"></el-avatar>
-    <el-form-item label="头像" prop="avatar">
-      <el-button text @click="dialogTableVisible = true">点击上传新头像</el-button>
-      <el-dialog v-model="dialogTableVisible" title="上传新头像">
-        <avatarUploaderVue />
-      </el-dialog>
-    </el-form-item>
-    <el-form-item label="昵称" prop="name">
-      <el-input v-model="ruleForm.name" />
-    </el-form-item>
-    <el-form-item label="手机号码" prop="phone">
-      <el-input v-model="ruleForm.phone" />
-    </el-form-item>
-    <el-form-item label="邮箱地址" prop="email">
-      <el-input v-model="ruleForm.email" />
-    </el-form-item>
-    <el-form-item label="出生日期" prop="birthday">
-      <el-date-picker
-          v-model="ruleForm.birthday"
-          type="date"
-          placeholder="选择日期"
-          style="width: 100%"
-      />
-    </el-form-item>
-    <el-form-item label="居住地址" prop="address">
-      <el-input v-model="ruleForm.address" />
-    </el-form-item>
-    <el-form-item label="个性签名" prop="motto">
-      <el-input v-model="ruleForm.motto" type="textarea" />
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="submitForm(ruleFormRef)">
-        更新个人信息
-      </el-button>
-    </el-form-item>
-  </el-form>
-</template>

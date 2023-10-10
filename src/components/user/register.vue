@@ -1,8 +1,63 @@
+<template>
+  <el-card class="ep-bg-purple" >
+    <el-text size="large" tag="b" type="info">注册新用户</el-text>
+    <br />
+    <el-icon size="150px"><Avatar /></el-icon>
+    <el-form
+      ref="registerFormRef"
+      :model="registerForm"
+      status-icon
+      :rules="rules"
+      label-width="70px"
+      class="Register"
+    >
+      <el-form-item label="昵称" prop="name">
+        <el-input v-model="registerForm.name" />
+      </el-form-item>
+      <el-form-item label="电话" prop="phone">
+        <el-input v-model="registerForm.phone" />
+      </el-form-item>
+      <el-form-item label="邮箱" prop="email">
+        <el-input v-model="registerForm.email" />
+      </el-form-item>
+      <el-form-item label="密码" prop="password">
+        <el-input
+          v-model="registerForm.password"
+          type="password"
+          autocomplete="off"
+        />
+      </el-form-item>
+      <el-form-item label="确认" prop="repassword">
+        <el-input
+          v-model="registerForm.repassword"
+          type="password"
+          autocomplete="off"
+        />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm(registerFormRef)">注册</el-button>
+        <el-button @click="resetForm(registerFormRef)">重置</el-button>
+      </el-form-item>
+    </el-form>
+  </el-card>
+  <el-card>
+    <el-row justify="center" align="center" :gutter="20">
+      <el-col :span="50">
+        <el-text>
+            已有帐户？
+            &nbsp
+            <el-link :underline="false" type="primary" href="/login">登录</el-link>
+        </el-text>
+      </el-col>
+    </el-row>
+  </el-card>
+</template>
+
 <script setup lang="ts">
   import { reactive, ref } from 'vue'
   import type { FormInstance, FormRules, ElMessage } from 'element-plus'
-  import router from "../routers";
-  import userService from '../apis/userService'
+  import router from "../../routers";
+  import userService from '../../apis/userService'
 
   const registerFormRef = ref<FormInstance>()
 
@@ -136,61 +191,6 @@
     formEl.resetFields()
   }
 </script>
-
-<template>
-  <el-card class="ep-bg-purple" >
-    <el-text size="large" tag="b" type="info">注册新用户</el-text>
-    <br />
-    <el-icon size="150px"><Avatar /></el-icon>
-    <el-form
-      ref="registerFormRef"
-      :model="registerForm"
-      status-icon
-      :rules="rules"
-      label-width="70px"
-      class="Register"
-    >
-      <el-form-item label="昵称" prop="name">
-        <el-input v-model="registerForm.name" />
-      </el-form-item>
-      <el-form-item label="电话" prop="phone">
-        <el-input v-model="registerForm.phone" />
-      </el-form-item>
-      <el-form-item label="邮箱" prop="email">
-        <el-input v-model="registerForm.email" />
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input
-          v-model="registerForm.password"
-          type="password"
-          autocomplete="off"
-        />
-      </el-form-item>
-      <el-form-item label="确认" prop="repassword">
-        <el-input
-          v-model="registerForm.repassword"
-          type="password"
-          autocomplete="off"
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm(registerFormRef)">注册</el-button>
-        <el-button @click="resetForm(registerFormRef)">重置</el-button>
-      </el-form-item>
-    </el-form>
-  </el-card>
-  <el-card>
-    <el-row justify="center" align="center" :gutter="20">
-      <el-col :span="50">
-        <el-text>
-            已有帐户？
-            &nbsp
-            <el-link :underline="false" type="primary" href="/login">登录</el-link>
-        </el-text>
-      </el-col>
-    </el-row>
-  </el-card>
-</template>
 
 <style scoped>
 .el-card {

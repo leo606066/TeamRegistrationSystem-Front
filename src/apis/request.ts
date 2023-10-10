@@ -5,11 +5,8 @@ const request = (config: object) => {
         timeout: 1000,
     });
 
-    const token = localStorage.getItem("token");
 
-    if (token) {
-        instance.defaults.headers.common["Authorization"] = `${token}`;
-    }
+    instance.defaults.headers.common["Authorization"] = `${localStorage.getItem("token")!}`;
 
     return instance(config);
 };

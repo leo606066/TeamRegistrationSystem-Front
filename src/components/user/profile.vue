@@ -1,8 +1,33 @@
+<template>
+  <el-avatar :src="avatar" @click="showProfile"></el-avatar>
+  <el-dialog v-model="dialogTableVisible" title="个人资料">
+    <div class="page">
+      <div class="banner">
+        <img src="../assets/background.jpg" alt="Banner" />
+      </div>
+      <div class="content">
+        <div class="profile">
+          <img :src="userInfo.avatar" alt="Avatar" />
+          <div class="name"> {{ userInfo.name }} </div>
+          <div class="title"> {{ userInfo.motto }} </div>
+        </div>
+        <div class="description">
+          <el-icon><Phone /></el-icon><el-text size="large"> {{ userInfo.phone }} </el-text>
+          &nbsp;
+          <el-icon><Message /></el-icon><el-text size="large"> {{ userInfo.email }} </el-text>
+          &nbsp;
+          <el-icon><HomeFilled /></el-icon><el-text size="large"> {{ userInfo.address }} </el-text>
+        </div>
+      </div>
+    </div>
+  </el-dialog>
+</template>
+
 <script setup lang="ts">
     import { ref, toRefs } from 'vue';
     import { ElMessage } from 'element-plus';
-    import userService from '../apis/userService';
-    import { userCompeleteInfo } from '../types/personalInfo';
+    import userService from '../../apis/userService';
+    import { userCompeleteInfo } from '../../types/personalInfo';
 
     const props = defineProps<{ name: string, avatar: string }>();
     const { name, avatar } = toRefs(props);
@@ -39,31 +64,6 @@
         uploadUserInfo();
     }
 </script>
-
-<template>
-  <el-avatar :src="avatar" @click="showProfile"></el-avatar>
-  <el-dialog v-model="dialogTableVisible" title="个人资料">
-    <div class="page">
-      <div class="banner">
-        <img src="../assets/background.jpg" alt="Banner" />
-      </div>
-      <div class="content">
-        <div class="profile">
-          <img :src="userInfo.avatar" alt="Avatar" />
-          <div class="name"> {{ userInfo.name }} </div>
-          <div class="title"> {{ userInfo.motto }} </div>
-        </div>
-        <div class="description">
-          <el-icon><Phone /></el-icon><el-text size="large"> {{ userInfo.phone }} </el-text>
-          &nbsp;
-          <el-icon><Message /></el-icon><el-text size="large"> {{ userInfo.email }} </el-text>
-          &nbsp;
-          <el-icon><HomeFilled /></el-icon><el-text size="large"> {{ userInfo.address }} </el-text>
-        </div>
-      </div>
-    </div>
-  </el-dialog>
-</template>
 
 <style scoped>
   .page {

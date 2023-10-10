@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import LoginVue from "../components/login.vue";
+  import LoginVue from "../components/user/login.vue";
 </script>
 
 <template>

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-  import ProfileVue from './profile.vue';
-</script>
-
 <template>
   <el-card>
     <template #header>
@@ -13,6 +9,10 @@
     
   </el-card>
 </template>
+
+<script setup lang="ts">
+  import ProfileVue from './user/profile.vue';
+</script>
 
 <style scoped>
   .el-card {

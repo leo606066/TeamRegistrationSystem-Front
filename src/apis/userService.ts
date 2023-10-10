@@ -5,7 +5,7 @@ export default class userService {
     static async login(data: loginInfo) : Promise<any> {
         return request({
             "headers": {
-                "content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             method: "post",
             url: "/api/login",
@@ -16,7 +16,7 @@ export default class userService {
     static async register(data: registerInfo) : Promise<any> {
         return request({
             "headers": {
-                "content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             method: "post",
             url: "/api/reg",
@@ -27,7 +27,7 @@ export default class userService {
     static async getBasicPersonalInformation(name : string) : Promise<any> {
         return request({
             "headers": {
-                "content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             method: "get",
             url: "/api/user/info",
@@ -37,15 +37,25 @@ export default class userService {
         });
     }
 
-    
     static async putBasicPersonalInformation(data : userSubmitInfo) : Promise<any> {
         return request({
             "headers": {
-                "content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             method: "put",
             url: "/api/user/info",
             data: data,
         });
+    }
+
+    static async uploadAvatar(data : FormData) : Promise<any> {
+        return request({
+            "headers": {
+                "Content-Type": "multipart/form-data"
+            },
+            method: "post",
+            url: "api/user/avatar",
+            data: data,
+        })
     }
 }

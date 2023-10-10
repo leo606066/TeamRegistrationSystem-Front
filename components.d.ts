@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AvatarUploader: typeof import('./src/components/avatarUploader.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -32,6 +33,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElText: typeof import('element-plus/es')['ElText']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     Footer: typeof import('./src/components/footer.vue')['default']
     Header: typeof import('./src/components/header.vue')['default']
     Home: typeof import('./src/components/home.vue')['default']

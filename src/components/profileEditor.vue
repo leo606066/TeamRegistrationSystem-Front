@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  // import imageUploader from './imageUploader.vue';
+  import avatarUploaderVue from './avatarUploader.vue';
 
   import { reactive, ref, onMounted } from 'vue';
   import type { FormInstance, FormRules, ElMessage } from 'element-plus';
@@ -14,7 +14,7 @@
   const { loginSession } = storeToRefs(newLoginStore);
   const { userSession } = storeToRefs(newUserStore);
 
-  // const dialogTableVisible = ref(false);
+  const dialogTableVisible = ref(false);
 
   onMounted(() => {
     if (!loginSession) {
@@ -162,12 +162,12 @@
     status-icon
   >
     <el-avatar :src="userSession.avatar" :size="100" style="margin-bottom: 20px;"></el-avatar>
-    <!-- <el-form-item label="头像" prop="avatar">
+    <el-form-item label="头像" prop="avatar">
       <el-button text @click="dialogTableVisible = true">点击上传新头像</el-button>
       <el-dialog v-model="dialogTableVisible" title="上传新头像">
-        <imageUploader />
+        <avatarUploaderVue />
       </el-dialog>
-    </el-form-item> -->
+    </el-form-item>
     <el-form-item label="昵称" prop="name">
       <el-input v-model="ruleForm.name" />
     </el-form-item>

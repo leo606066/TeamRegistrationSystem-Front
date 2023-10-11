@@ -3,6 +3,7 @@ import HomeVue from "../pages/Home.vue";
 import LoginVue from "../pages/user/Login.vue";
 import RegisterVue from "../pages/user/Register.vue";
 import ProfileEditorVue from "../pages/user/ProfileEditor.vue";
+import LeoTest from '../pages/LeoTest.vue'
 
 const routes = [
     {
@@ -35,6 +36,14 @@ const routes = [
         component: ProfileEditorVue,
         meta: {
           title: '修改个人信息',
+        },
+    },
+    {
+        path: "/leo",
+        name: "Leo",
+        component: LeoTest,
+        meta: {
+          title: 'Leo组件测试页',
         },
     }
 ];

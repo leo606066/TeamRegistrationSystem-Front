@@ -1,14 +1,13 @@
 <script setup lang="ts">
   import HeaderVue from './components/header.vue';
   import FooterVue from './components/footer.vue';
-  import MenuVue from './components/menu.vue';
+  // import MenuVue from './components/menu.vue';
 
-  import loginStore from './stores/loginStore.ts';
-  import { storeToRefs } from 'pinia';
+  // import loginStore from './stores/loginStore.ts';
+  // import { storeToRefs } from 'pinia';
 
-  const newLoginStore = loginStore();
-  const { loginSession } = storeToRefs(newLoginStore);
-
+  // const newLoginStore = loginStore();
+  // const { loginSession } = storeToRefs(newLoginStore);
 </script>
 
 <template>
@@ -17,9 +16,9 @@
       <HeaderVue />
     </el-header>
     <el-container>
-      <el-aside v-show="loginSession">
+      <!-- <el-aside v-show="loginSession">
         <MenuVue />
-      </el-aside>
+      </el-aside> -->
       <el-main>
         <router-view />
       </el-main>
@@ -42,11 +41,11 @@
   right: 0;
   top: 0;
 }
-.el-aside {
+/* .el-aside {
   z-index: 1;
-  position: fixed;
+  display: flex;
   left: 2%;
-}
+} */
 .el-main {
   z-index: 1;
 }

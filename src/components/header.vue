@@ -33,23 +33,31 @@
         注册
       </el-button>
     </div>
-    <div v-show="loginSession" :key="2" class="userStatus">
+    <el-dropdown v-show="loginSession">
       <el-menu-item>
-        <el-icon><Bell /></el-icon>消息
+        <el-icon><List /></el-icon> <span>团队</span>
       </el-menu-item>
-      <el-menu-item>
-        <el-dropdown>
-          <el-avatar :src="userSession.avatar" />
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item @click="pushToProfileEditor"><el-icon><User /></el-icon>修改信息</el-dropdown-item>
-              <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出登录</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </el-menu-item>
-    </div>
-    &ensp;
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item @click="pushToManager"><el-icon><Menu /></el-icon>管理队伍</el-dropdown-item>
+          <el-dropdown-item @click="pushToCreate"><el-icon><CirclePlusFilled /></el-icon>创建队伍</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+    <el-menu-item v-show="loginSession">
+      <el-icon><Bell /></el-icon>消息
+    </el-menu-item>
+    <el-menu-item v-show="loginSession">
+      <el-dropdown>
+        <el-avatar :src="userSession.avatar" />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item @click="pushToProfileEditor"><el-icon><User /></el-icon>修改信息</el-dropdown-item>
+            <el-dropdown-item @click="pushToOut" divided><el-icon><SwitchButton /></el-icon>退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -89,6 +97,15 @@ const pushToOut = () => {
   };
   router.push("/Login");
 };
+
+const pushToManager = () => {
+  router.push("/manager");
+}
+
+const pushToCreate = () => {
+  router.push("/create");
+}
+
 </script>
 
 <style scoped>

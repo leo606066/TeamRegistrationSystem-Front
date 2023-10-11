@@ -1,6 +1,14 @@
 <script setup lang="ts">
   import HeaderVue from './components/header.vue';
   import FooterVue from './components/footer.vue';
+  import MenuVue from './components/menu.vue';
+
+  import loginStore from './stores/loginStore.ts';
+  import { storeToRefs } from 'pinia';
+
+  const newLoginStore = loginStore();
+  const { loginSession } = storeToRefs(newLoginStore);
+
 </script>
 
 <template>
@@ -8,18 +16,23 @@
     <el-header>
       <HeaderVue />
     </el-header>
-    <el-main>
-      <router-view />
-    </el-main>
-    <el-footer>
-      <FooterVue />
-    </el-footer>
+    <el-container>
+      <el-aside v-show="loginSession">
+        <MenuVue />
+      </el-aside>
+      <el-main>
+        <router-view />
+      </el-main>
+      <el-footer>
+        <FooterVue />
+      </el-footer>
+    </el-container>
   </el-container>
 </template>
 
 <style scoped>
 .el-container {
-  flex: 1;
+  flex: auto;
 }
 .el-header {
   z-index: 2;
@@ -28,6 +41,11 @@
   left: 0;
   right: 0;
   top: 0;
+}
+.el-aside {
+  z-index: 1;
+  position: fixed;
+  left: 2%;
 }
 .el-main {
   z-index: 1;

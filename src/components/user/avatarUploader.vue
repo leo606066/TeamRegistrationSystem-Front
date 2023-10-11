@@ -30,30 +30,27 @@
   import type { UploadUserFile } from 'element-plus';
   import userService from '../../apis/userService';
   import userStore from '../../stores/userStore.ts';
-import { storeToRefs } from 'pinia';
+  import { storeToRefs } from 'pinia';
 
   const newUserStore = userStore();
   const { userSession } = storeToRefs(newUserStore);
 
   const fileList = ref<UploadUserFile[]>();
-
+  // 暂未实现
   const beforeUpload = (file: File) => {
     const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
-    const isLt2M = file.size / 1024 / 1024 < 2;
+    const isLt2M = file.size / 1024 / 1024 / 1024 < 200;
 
     if (!isJPG) {
       ElMessage.error('只支持上传 JPG/PNG 格式的图片！');
     }
     if (!isLt2M) {
-      ElMessage.error('文件大小不能超过 2MB！');
+      ElMessage.error('文件大小不能超过 200KB！');
     }
-    
-    if (isJPG && isLt2M) {
 
-    }
-    return false;
+    return isJPG && isLt2M;
   };
-
+  // 手动上传(自定义上传服务)
   const confirm = async () => {
       const param = new FormData();
       fileList.value?.forEach((val : any) => {

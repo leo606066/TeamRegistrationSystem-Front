@@ -170,7 +170,7 @@
 
   const submit = async () => {
     // console.log(ruleForm);
-    // console.log("发送请求");
+    // console.log("发送请求：修改个人信息");
     const res = await userService.putBasicPersonalInformation(ruleForm.value);
     // console.log("请求成功，获得数据", res);
     if (res.data.code === 200) {

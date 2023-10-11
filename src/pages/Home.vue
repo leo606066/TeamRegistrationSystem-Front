@@ -1,14 +1,18 @@
 <template>
+  <TimeVue />
   <el-card>
     <template #header>
-      <span>关于我们</span>
+      <strong><span class="hi">争分夺秒吧！少年！</span></strong>
+
     </template>
     <ProfileVue name="艾斯比" avatar="http://47.115.209.120:8080/uploads/674a32d1-760e-43cd-8f89-d65031649a18.jpg" />
+    
   </el-card>
 </template>
 
 <script setup lang="ts">
   import ProfileVue from '../components/user/profile.vue';
+  import TimeVue from '../components/user/time.vue';
 </script>
 
 <style scoped>
@@ -17,5 +21,9 @@
   }
   .el-card:last-child {
     margin-bottom: 0;
+  }
+  .hi{font-style:italic ;
+
+    
   }
 </style>

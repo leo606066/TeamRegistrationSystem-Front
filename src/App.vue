@@ -4,7 +4,6 @@
 </script>
 
 <template>
-  <div id="background"></div>
   <el-container>
     <el-header>
       <HeaderVue />

@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-  import avatarUploaderVue from './avatarUploader.vue';
+  import avatarUploaderVue from '../../components/user/avatarUploader.vue';
 
   import { reactive, ref, onMounted } from 'vue';
   import type { FormInstance, FormRules, ElMessage } from 'element-plus';

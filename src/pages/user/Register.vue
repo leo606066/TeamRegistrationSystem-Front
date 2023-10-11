@@ -161,9 +161,9 @@
       password: registerForm.password,
     })
     // console.log(userInfo);
-    // console.log("发送请求");
+    console.log("发送请求：注册");
     const res = await userService.register(userInfo.value);
-    // console.log("请求成功");
+    console.log("请求成功，获得数据：", res);
     if (res.data.code === 200) {
       if (res.data.msg === "OK") {
         const responseData = res.data.data;

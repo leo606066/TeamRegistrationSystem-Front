@@ -102,7 +102,7 @@
     if (value === '') {
       callback(new Error('请输入密码'))
     } else if (!PasswordRegularExpression.test(value)) {
-      callback(new Error('密码格式错误'))
+      callback(new Error('密码格式错误，需要字母与数字组合的8~25位密码'))
     } else {
       if (registerForm.repassword !== '') {
         if (!registerFormRef.value) return

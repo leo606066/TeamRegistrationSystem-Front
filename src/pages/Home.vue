@@ -6,22 +6,32 @@
 
     </template>
     <ProfileVue name="艾斯比" avatar="http://47.115.209.120:8080/uploads/674a32d1-760e-43cd-8f89-d65031649a18.jpg" /><hr>
-    一颗奔腾的心！（没有毒鸡汤你让前端怎么活！！
+    <strong>拥有一颗奔腾的心！（没有毒鸡汤你让前端怎么活！！</strong>
 
+  </el-card>
+  <el-card>
+    <el-text><Sentences /></el-text>
   </el-card>
 </template>
 
 <script setup lang="ts">
   import ProfileVue from '../components/user/profile.vue';
   import TimeVue from '../components/time.vue';
+  import Sentences from '../components/sentences.vue';
 </script>
+
+
 
 <style scoped>
   .el-card {
-    margin-bottom: 10px;
+    margin-bottom: 100px;
+    margin-top: 50px;
   }
   .el-card:last-child {
     margin-bottom: 0;
+  }
+  .el-text{
+    font:italic
   }
 
 </style>

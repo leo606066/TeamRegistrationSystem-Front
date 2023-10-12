@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AvatarUploader: typeof import('./src/components/user/avatarUploader.vue')['default']
-    ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -40,7 +39,7 @@ declare module 'vue' {
     Profile: typeof import('./src/components/user/profile.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Teamsearch: typeof import('./src/components/team/Teamsearch.vue')['default']
+    Sentences: typeof import('./src/components/sentences.vue')['default']
     TeamSearch: typeof import('./src/components/team/teamSearch.vue')['default']
     Test: typeof import('./src/components/Test.vue')['default']
     Time: typeof import('./src/components/time.vue')['default']

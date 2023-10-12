@@ -14,10 +14,6 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
-  // 关闭自动填充
-  build: {
-    polyfillDynamicImport: false
-  },
   // 设置 vite proxy
   server: {
     proxy: {

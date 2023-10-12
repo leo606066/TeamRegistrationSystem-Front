@@ -12,19 +12,6 @@
       <span>首页</span>
     </el-menu-item>
     <div class="flex-grow" />
-    <el-input
-      v-show="loginSession"
-      v-model="input"
-      placeholder="Search"
-      class="search"
-    >
-      <template #append>
-        <el-button>
-          <el-icon><Search /></el-icon>
-        </el-button>
-      </template>
-    </el-input>
-    <div class="flex-grow" />
     <div v-show="!loginSession" :key="1" class="userStatus">
       <el-button type="primary" @click="pushToLogin" class="button">
         登录
@@ -34,7 +21,7 @@
       </el-button>
     </div>
     <el-dropdown v-show="loginSession">
-      <el-menu-item>
+      <el-menu-item index="/teams">
         <el-icon><List /></el-icon> <span>团队</span>
       </el-menu-item>
       <template #dropdown>
@@ -62,7 +49,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import router from "../routers";
 import loginStore from '../stores/loginStore.ts';
 import userStore from '../stores/userStore.ts';
@@ -72,8 +58,6 @@ const newLoginStore = loginStore();
 const { loginSession } = storeToRefs(newLoginStore);
 const newUserStore = userStore();
 const { userSession } = storeToRefs(newUserStore);
-
-const input = ref('');
 
 const pushToLogin = () => {
   router.push("/login");
@@ -118,9 +102,6 @@ const pushToCreate = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.search {
-  width: 20%;
 }
 .userStatus {
   position: relative;

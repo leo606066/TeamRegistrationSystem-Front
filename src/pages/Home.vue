@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
   import ProfileVue from '../components/user/profile.vue';
-  import TimeVue from '../components/user/time.vue';
+  import TimeVue from '../components/time.vue';
 </script>
 
 <style scoped>

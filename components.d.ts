@@ -10,6 +10,7 @@ declare module 'vue' {
     AvatarUploader: typeof import('./src/components/user/avatarUploader.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCol: typeof import('element-plus/es')['ElCol']
@@ -31,6 +32,7 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElRow: typeof import('element-plus/es')['ElRow']
+    ElSpace: typeof import('element-plus/es')['ElSpace']
     ElText: typeof import('element-plus/es')['ElText']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     Footer: typeof import('./src/components/footer.vue')['default']
@@ -38,8 +40,9 @@ declare module 'vue' {
     Profile: typeof import('./src/components/user/profile.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Teamsearch: typeof import('./src/components/Teamsearch.vue')['default']
-    TeamSearch: typeof import('./src/components/TeamSearch.vue')['default']
-    Time: typeof import('./src/components/user/time.vue')['default']
+    Teamsearch: typeof import('./src/components/team/Teamsearch.vue')['default']
+    TeamSearch: typeof import('./src/components/team/teamSearch.vue')['default']
+    Test: typeof import('./src/components/Test.vue')['default']
+    Time: typeof import('./src/components/time.vue')['default']
   }
 }

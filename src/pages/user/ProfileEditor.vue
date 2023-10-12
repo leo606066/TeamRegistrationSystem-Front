@@ -50,11 +50,12 @@
   import avatarUploaderVue from '../../components/user/avatarUploader.vue';
 
   import { reactive, ref, onMounted } from 'vue';
-  import type { FormInstance, FormRules, ElMessage } from 'element-plus';
+  import { FormInstance, FormRules, ElMessage } from 'element-plus';
   import { userSubmitInfo } from '../../types/personalInfo';
   import userService from '../../apis/userService';
   import loginStore from '../../stores/loginStore.ts';
   import userStore from '../../stores/userStore.ts';
+  import router from '../../routers';
   import { storeToRefs } from 'pinia';
 
   const newLoginStore = loginStore();
@@ -169,10 +170,10 @@
   }
 
   const submit = async () => {
-    // console.log(ruleForm);
-    // console.log("发送请求：修改个人信息");
+    console.log(ruleForm);
+    console.log("发送请求：修改个人信息");
     const res = await userService.putBasicPersonalInformation(ruleForm.value);
-    // console.log("请求成功，获得数据", res);
+    console.log("请求成功，获得数据", res);
     if (res.data.code === 200) {
       if (res.data.msg === "OK") {
         const newUserStore = userStore();
@@ -180,6 +181,11 @@
           name : ruleForm.value.name,
           avatar : userSession.value.avatar,
         });
+          ({
+          message: "更新成功！",
+          type: 'success',
+        });
+        router.push("/");
       } else {
         ElMessage.error(res.data.msg);
       }

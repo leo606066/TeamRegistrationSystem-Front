@@ -64,7 +64,7 @@
           const Avatar = res.data.data.avatar;
           userSession.value.avatar = Avatar;
         } else {
-          console.log(res.data.msg);
+          ElMessage.error(res.data.msg);
         }
       } else {
         console.error(res);

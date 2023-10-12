@@ -3,6 +3,7 @@ import HomeVue from "../pages/Home.vue";
 import LoginVue from "../pages/user/Login.vue";
 import RegisterVue from "../pages/user/Register.vue";
 import ProfileEditorVue from "../pages/user/ProfileEditor.vue";
+import TeamsVue from "../pages/team/Search.vue";
 import LeoTest from '../pages/LeoTest.vue'
 
 const routes = [
@@ -36,6 +37,14 @@ const routes = [
         component: ProfileEditorVue,
         meta: {
           title: '修改个人信息',
+        },
+    },
+    {
+        path: "/teams",
+        name: "Teams",
+        component: TeamsVue,
+        meta: {
+          title: '团队',
         },
     },
     {

@@ -47,9 +47,9 @@
     });
 
     const uploadUserInfo = async () => {
-        // console.log("请求数据：获得个人基本信息", name.value);
+        console.log("请求数据：获得个人基本信息", name.value);
         const res = await userService.getBasicPersonalInformation(name.value);
-        // console.log("请求成功，获得数据:", res);
+        console.log("请求成功，获得数据:", res);
 
         if (res.data.code === 200) {
             if (res.data.msg === 'OK') {

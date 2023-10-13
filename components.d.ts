@@ -41,7 +41,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Sentences: typeof import('./src/components/sentences.vue')['default']
     TeamSearch: typeof import('./src/components/team/teamSearch.vue')['default']
-    Test: typeof import('./src/components/Test.vue')['default']
+    Test: typeof import('./src/components/test.vue')['default']
     Time: typeof import('./src/components/time.vue')['default']
   }
 }

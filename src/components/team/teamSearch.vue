@@ -44,19 +44,19 @@
   import teamService from '../../apis/teamService';
   import { teamInfo } from '../../types/teamInfo';
 
-  const team_data = ref('');
-  const team_list = ref<teamInfo[]>();
+  const teamData = ref('');
+  const teamList = ref<teamInfo[]>();
 
   const SearchTeam = async () => {
-    if (team_data.value === '') {
+    if (teamData.value === '') {
       ElMessage.error("请输入队伍信息");
     } else {
-      const res = await teamService.getTeamInfo(team_data.value);
+      const res = await teamService.getTeamInfo(teamData.value);
       console.log(res);
       if (res.data.code === 200) {
         if (res.data.msg === 'OK') {
-          team_list.value = res.data.data.team_list;
-          console.log(team_list);
+          teamList.value = res.data.data.team_list;
+          console.log(teamList);
         } else {
           ElMessage.error(res.data.msg);
         }

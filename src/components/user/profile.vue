@@ -5,7 +5,7 @@
   <el-dialog v-model="dialogTableVisible" title="个人资料">
     <div class="page">
       <div class="banner">
-        <img src="../../assets/background.jpg" alt="Banner" />
+        <img src="../../assets/background_userProfile.jpg" alt="Banner" />
       </div>
       <div class="content">
         <div class="profile">

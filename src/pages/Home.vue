@@ -1,4 +1,5 @@
 <template>
+<div class="background">
   <TimeVue />
   <el-card>
     <template #header>
@@ -6,12 +7,14 @@
 
     </template>
     <ProfileVue name="艾斯比" avatar="http://47.115.209.120:8080/uploads/674a32d1-760e-43cd-8f89-d65031649a18.jpg" /><hr>
-    <strong>拥有一颗奔腾的心！（没有毒鸡汤你让前端怎么活！！</strong>
+    <strong><p class="a">拥有一颗奔腾的心！（没有毒鸡汤你让前端怎么活！！</p></strong>
 
   </el-card>
   <el-card>
     <el-text><Sentences /></el-text>
   </el-card>
+
+</div>
 </template>
 
 <script setup lang="ts">
@@ -30,8 +33,10 @@
   .el-card:last-child {
     margin-bottom: 0;
   }
-  .el-text{
-    font:italic
+  .a{
+    font-style:italic;
   }
-
+  .background{
+    background-image: url(../assets/);
+  }
 </style>

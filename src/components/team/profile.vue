@@ -6,16 +6,16 @@
         </div>
         <div class="content">
           <div class="profile">
-            <img :src="userInfo.avatar" alt="Avatar" />
-            <div class="name"> {{ userInfo.name }} </div>
-            <div class="title"> {{ userInfo.motto }} </div>
+            <img :src="teamInfo?.avatar" alt="Avatar" />
+            <div class="name"> {{ teamInfo?.team_name }} </div>
+            <div class="title"> {{ teamInfo?.slogan }} </div>
           </div>
           <div class="description">
-            <el-icon><Phone /></el-icon><el-text size="large"> {{ userInfo.phone }} </el-text>
+            <el-icon><Phone /></el-icon><el-text size="large"> {{ teamInfo.phone }} </el-text>
             &nbsp;
-            <el-icon><Message /></el-icon><el-text size="large"> {{ userInfo.email }} </el-text>
+            <el-icon><Message /></el-icon><el-text size="large"> {{ teamInfo.email }} </el-text>
             &nbsp;
-            <el-icon><HomeFilled /></el-icon><el-text size="large"> {{ userInfo.address }} </el-text>
+            <el-icon><HomeFilled /></el-icon><el-text size="large"> {{ teamInfo.address }} </el-text>
           </div>
         </div>
       </div>

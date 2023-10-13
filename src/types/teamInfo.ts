@@ -13,7 +13,7 @@ export interface teamInfo {
 export interface teamCompeleteInfo {
     id : number,
     team_name : string,
-    captain_id : number,
+    captain_name : string,
     slogan : string,
     avatar : string,
     confirm : number,

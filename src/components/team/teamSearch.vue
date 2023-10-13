@@ -3,7 +3,7 @@
   <div class="team-search">
     <h2 size="large">查询队伍</h2>
     <el-input
-      v-model="team_data"
+      v-model="teamData"
       placeholder="请输入团队名称或编号"
       class="search"
     >
@@ -14,26 +14,31 @@
       </template>
     </el-input>
     <el-space size="large">
-      <el-card v-for="team in team_list" shadow="hover">
-        <template #header>
-            <div class="header">
-              <div class="avatar">
-                <el-badge :value="team.confirm ? '已报名活动' : '未报名活动'" class="item" :type="team.confirm ? 'primary' : 'warning'">
-                  <el-avatar :src="team.avatar"></el-avatar>
-                </el-badge>
+      <div v-for="team in teamList" >
+        <el-card shadow="hover" @click="showTeamInfo(team.id)">
+          <template #header>
+              <div class="header">
+                <div class="avatar">
+                  <el-badge :value="team.confirm ? '已报名活动' : '未报名活动'" class="item" :type="team.confirm ? 'primary' : 'warning'">
+                    <el-avatar :src="team.avatar"></el-avatar>
+                  </el-badge>
+                  &nbsp;
+                  <el-text>{{ team.team_name }}</el-text>
+                </div>
                 &nbsp;
-                <el-text>{{ team.team_name }}</el-text>
+                &nbsp;
+                <el-text size="small" type="info">{{ team.slogan }}</el-text>
               </div>
-              &nbsp;
-              &nbsp;
-              <el-text size="small" type="info">{{ team.slogan }}</el-text>
-            </div>
-        </template>
-        <el-icon><UserFilled /></el-icon><span>领队:{{ team.captain_name }}</span>
-        &nbsp;
-        &nbsp;
-        <el-icon><Menu /></el-icon><span>人数:{{ team.number }}</span>
-      </el-card>
+          </template>
+          <el-icon><UserFilled /></el-icon><span>领队:{{ team.captain_name }}</span>
+          &nbsp;
+          &nbsp;
+          <el-icon><Menu /></el-icon><span>人数:{{ team.number }}</span>
+        </el-card>
+      </div>
+      <el-dialog v-model="dialogTableVisible" title="团队详情">
+        <teamInfoVue :id="currentID"/>
+      </el-dialog>
     </el-space>
   </div>
 </template>
@@ -43,9 +48,12 @@
   import { ElMessage } from 'element-plus';
   import teamService from '../../apis/teamService';
   import { teamInfo } from '../../types/teamInfo';
+  import teamInfoVue from './profile.vue';
 
   const teamData = ref('');
   const teamList = ref<teamInfo[]>();
+  const dialogTableVisible = ref(false);
+  const currentID = ref(0);
 
   const SearchTeam = async () => {
     if (teamData.value === '') {
@@ -62,6 +70,11 @@
         }
       }
     }
+  }
+
+  const showTeamInfo = (teamID : number) => {
+    currentID.value = teamID;
+    dialogTableVisible.value = true;
   }
 </script>
 

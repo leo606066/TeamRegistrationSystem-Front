@@ -13,4 +13,16 @@ export default class teamService {
             }
         });
     }
+    static async getTeamCompeleteInfo(id : number) : Promise<any> {
+        return request({
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            method: "get",
+            url: "/api/team/info",
+            params: {
+                id : id,
+            }
+        });
+    }
 };

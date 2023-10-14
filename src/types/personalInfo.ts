@@ -34,3 +34,8 @@ export interface userCompeleteInfo {
     motto: string,
     avatar: string,
 }
+
+export interface userMessage {
+    information: string,
+    time: string,
+}

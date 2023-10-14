@@ -1,5 +1,5 @@
 import request from "./request";
-import { teamPermission } from "../types/teamInfo";
+import { teamPermission, teamCreaterInfo } from "../types/teamInfo";
 
 export default class teamService {
     static async getTeamInfo(team_data: string): Promise<any> {
@@ -88,6 +88,17 @@ export default class teamService {
             params: {
                 id: id,
             },
+        });
+    }
+
+    static async createTeam(data: teamCreaterInfo): Promise<any> {
+        return request({
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            method: "post",
+            url: "/api/team/create",
+            data: data,
         });
     }
 };

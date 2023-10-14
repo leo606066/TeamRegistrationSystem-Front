@@ -22,6 +22,12 @@ export interface teamCompeleteInfo {
     users: userInfo[],
 }
 
+export interface teamCreaterInfo {
+    team_name: string,
+    slogan: string,
+    team_password: string,
+}
+
 export interface teamPermission {
     id: number,
     team_password: string,

@@ -21,3 +21,8 @@ export interface teamCompeleteInfo {
     number : number,
     users : userInfo[],
 }
+
+export interface teamPermission {
+    id : number,
+    team_password : string,
+}

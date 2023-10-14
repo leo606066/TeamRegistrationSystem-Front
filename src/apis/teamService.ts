@@ -1,4 +1,5 @@
 import request from "./request";
+import { teamPermission } from "../types/teamInfo";
 
 export default class teamService {
     static async getTeamInfo(team_data : string) : Promise<any> {
@@ -23,6 +24,16 @@ export default class teamService {
             params: {
                 id : id,
             }
+        });
+    }
+    static async joinTeam(data : teamPermission) :Promise<any> {
+        return request({
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            method: "post",
+            url: "/api/team",
+            data: data,
         });
     }
 };

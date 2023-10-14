@@ -60,7 +60,18 @@
               </el-space>
               <br />
               <br />
-              <el-button v-if="teamInfo?.signed === 0" type="primary" @click="">加入该团队</el-button>
+              <div v-if="teamInfo?.signed === 0">
+                <el-input
+                  v-model="team_password"
+                  type="password"
+                  placeholder="队伍邀请码"
+                >
+                  <template #prefix>
+                    <el-icon class="el-input__icon"><Lock /></el-icon>
+                  </template>
+                </el-input>
+                <el-button type="primary" @click="clickToJoinTeam(teamInfo?.id)">加入该团队</el-button>
+              </div>
               <el-button v-else-if="teamInfo?.signed === 1" type="danger" @click="">退出该团队</el-button>
               <div v-else>
                 <el-button type="info" @click="">编辑团队信息</el-button>
@@ -105,8 +116,8 @@
     }
   }
 
-  const showTeamInfo = (teamID : number) => {
-    update(teamID);
+  const showTeamInfo = (ID : number) => {
+    update(ID);
     dialogTableVisible.value = true;
   }
 
@@ -125,6 +136,27 @@
         } else {
             ElMessage.error(res.data.msg);
         }
+    }
+  }
+
+  const team_password = ref('');
+  const clickToJoinTeam = async (ID : number) => {
+    console.log("请求数据：加入团队", ID);
+    const res = await teamService.joinTeam({
+      id : ID,
+      team_password : team_password.value,
+    });
+    console.log('请求成功，返回数据', res);
+    if (res.data.code === 200) {
+      if (res.data.msg === 'OK') {
+        ElMessage({
+          type: 'success',
+          message: '成功加入团队',
+        })
+        update(ID);
+      } else{
+        ElMessage.error(res.data.msg);
+      }
     }
   }
 </script>

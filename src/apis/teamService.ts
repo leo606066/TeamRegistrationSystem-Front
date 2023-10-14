@@ -14,6 +14,7 @@ export default class teamService {
             },
         });
     }
+
     static async getTeamCompeleteInfo(id : number) : Promise<any> {
         return request({
             "headers": {
@@ -26,6 +27,7 @@ export default class teamService {
             },
         });
     }
+
     static async joinTeam(data : teamPermission) : Promise<any> {
         return request({
             "headers": {
@@ -36,6 +38,7 @@ export default class teamService {
             data: data,
         });
     }
+
     static async quitTeam(id : number) : Promise<any> {
         return request({
             "headers": {
@@ -48,6 +51,7 @@ export default class teamService {
             },
         });
     }
+
     static async delTeam(id : number) : Promise<any> {
         return request({
             "headers": {
@@ -60,6 +64,7 @@ export default class teamService {
             },
         });
     }
+
     static async putSignIn(id : number) : Promise<any> {
         return request({
             "headers": {
@@ -72,6 +77,7 @@ export default class teamService {
             },
         });
     }
+    
     static async putSignOut(id : number) : Promise<any> {
         return request({
             "headers": {

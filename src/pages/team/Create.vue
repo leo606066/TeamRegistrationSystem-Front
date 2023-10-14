@@ -8,7 +8,7 @@
             <el-form-item label="团队名" prop="name">
                 <el-input v-model="createForm.name" />
             </el-form-item>
-            <el-form-item label="口号" prop="slogan">
+            <el-form-item label="口号" prop="slogan" type="textarea">
                 <el-input v-model="createForm.slogan" />
             </el-form-item>
             <el-form-item label="密码" prop="password">

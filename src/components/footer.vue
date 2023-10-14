@@ -15,9 +15,8 @@
   .el-divider {
     margin-bottom: 8px;
     margin-top: 0px;
-  .a{
-    margin-bottom: 10px;
   }
+  .a {
+      margin-bottom: 10px;
   }
-
 </style>

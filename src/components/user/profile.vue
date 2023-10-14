@@ -1,6 +1,5 @@
 <template>
   <el-avatar :src="avatar" @click="showProfile"></el-avatar>
-  <br />
   <el-text>{{ name }}</el-text>
   <el-dialog v-model="dialogTableVisible" title="个人资料">
     <div class="page">

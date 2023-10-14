@@ -4,11 +4,9 @@
   <el-card>
     <template #header>
       <strong><span>争分夺秒吧！少年！</span></strong>
-
     </template>
-    <ProfileVue name="艾斯比" avatar="http://47.115.209.120:8080/uploads/674a32d1-760e-43cd-8f89-d65031649a18.jpg" /><hr>
+    团队报名系统
     <strong><p class="a">拥有一颗奔腾的心！（没有毒鸡汤你让前端怎么活！！</p></strong>
-
   </el-card>
   <el-card>
     <el-text><Sentences /></el-text>
@@ -17,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-  import ProfileVue from '../components/user/profile.vue';
   import TimeVue from '../components/time.vue';
   import Sentences from '../components/sentences.vue';
 </script>

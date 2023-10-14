@@ -26,7 +26,7 @@
       </el-menu-item>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click="pushToManager"><el-icon><Menu /></el-icon>查询队伍</el-dropdown-item>
+          <el-dropdown-item @click="pushToTeams"><el-icon><Menu /></el-icon>加入队伍</el-dropdown-item>
           <el-dropdown-item @click="pushToCreate"><el-icon><CirclePlusFilled /></el-icon>创建队伍</el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -82,7 +82,7 @@ const pushToOut = () => {
   router.push("/Login");
 };
 
-const pushToManager = () => {
+const pushToTeams = () => {
   router.push("/teams");
 }
 

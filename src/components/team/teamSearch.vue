@@ -53,16 +53,21 @@
               <el-icon><Menu /></el-icon><el-text size="large"> {{ teamInfo?.number }} </el-text>
               <br />
               <br />
-              <userProfileVue v-for="user in teamInfo?.users" :name="user.name" :avatar="user.avatar"/>
+              <el-space size="samll">
+                <div v-for="user in teamInfo?.users" class="userProfileList">
+                  <userProfileVue :name="user.name" :avatar="user.avatar"/>
+                </div>
+              </el-space>
               <br />
               <br />
               <el-button v-if="teamInfo?.signed === 0" type="primary" @click="">加入该团队</el-button>
               <el-button v-else-if="teamInfo?.signed === 1" type="danger" @click="">退出该团队</el-button>
-              <div v-else class="">
+              <div v-else>
+                <el-button type="info" @click="">编辑团队信息</el-button>
+                <el-button v-if="teamInfo?.confirm == 0" type="primary" @click="">报名活动</el-button>
+                <el-button v-else type="warning" @click="">取消报名</el-button>
                 <el-button type="danger" @click="">解散团队</el-button>
               </div>
-              
-              
             </div>
           </div>
         </div>
@@ -77,6 +82,7 @@
   import teamService from '../../apis/teamService';
   import { teamInfo } from '../../types/teamInfo';
   import { teamCompeleteInfo } from "../../types/teamInfo";
+  import userProfileVue from "../user/profile.vue";
 
   const teamData = ref('');
   const teamList = ref<teamInfo[]>();
@@ -190,5 +196,10 @@
   }
   .el-col {
     text-align: center;
+  }
+  .userProfileList {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 </style>

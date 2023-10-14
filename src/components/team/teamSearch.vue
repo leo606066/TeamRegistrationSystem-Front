@@ -53,14 +53,14 @@
               <el-icon><Menu /></el-icon><el-text size="large"> {{ teamInfo?.number }} </el-text>
               <br />
               <br />
-              <el-space size="samll">
+              <el-space size="small">
                 <div v-for="user in teamInfo?.users" class="userProfileList">
                   <userProfileVue :name="user.name" :avatar="user.avatar"/>
                 </div>
               </el-space>
               <br />
               <br />
-              <div v-if="teamInfo?.signed === 0">
+              <div v-show="teamInfo?.confirm == 0" v-if="teamInfo?.signed === 0">
                 <el-input
                   v-model="team_password"
                   type="password"
@@ -72,12 +72,12 @@
                 </el-input>
                 <el-button type="primary" @click="clickToJoinTeam(teamInfo?.id)">加入该团队</el-button>
               </div>
-              <el-button v-else-if="teamInfo?.signed === 1" type="danger" @click="">退出该团队</el-button>
+              <el-button v-else-if="teamInfo?.signed === 1" type="danger" @click="clickToQuitTeam(teamInfo?.id)">退出该团队</el-button>
               <div v-else>
-                <el-button type="info" @click="">编辑团队信息</el-button>
-                <el-button v-if="teamInfo?.confirm == 0" type="primary" @click="">报名活动</el-button>
-                <el-button v-else type="warning" @click="">取消报名</el-button>
-                <el-button type="danger" @click="">解散团队</el-button>
+                <el-button v-show="teamInfo?.confirm == 0" type="info" @click="">编辑团队信息</el-button>
+                <el-button v-show="teamInfo?.confirm == 0" type="danger" @click="clickToDelTeam(teamInfo?.id)">解散团队</el-button>
+                <el-button v-if="teamInfo?.confirm == 0" type="primary" @click="clickToSignIn(teamInfo?.id)">报名活动</el-button>
+                <el-button v-else type="warning" @click="clickToSignOut(teamInfo?.id)">取消报名</el-button>
               </div>
             </div>
           </div>
@@ -154,6 +154,74 @@
           message: '成功加入团队',
         })
         update(ID);
+      } else{
+        ElMessage.error(res.data.msg);
+      }
+    }
+  }
+
+  const clickToQuitTeam = async (ID : number) => {
+    console.log("请求数据：退出团队", ID);
+    const res = await teamService.quitTeam(ID);
+    console.log('请求成功，返回数据', res);
+    if (res.data.code === 200) {
+      if (res.data.msg === 'OK') {
+        ElMessage({
+          type: 'success',
+          message: '退出团队',
+        })
+        update(ID);
+      } else{
+        ElMessage.error(res.data.msg);
+      }
+    }
+  }
+
+  const clickToDelTeam = async (ID : number) => {
+    console.log("请求数据：解散团队", ID);
+    const res = await teamService.delTeam(ID);
+    console.log('请求成功，返回数据', res);
+    if (res.data.code === 200) {
+      if (res.data.msg === 'OK') {
+        ElMessage({
+          type: 'success',
+          message: '解散团队',
+        })
+        dialogTableVisible.value = false;
+      } else{
+        ElMessage.error(res.data.msg);
+      }
+    }
+  }
+
+  const clickToSignIn = async (ID : number) => {
+    console.log("请求数据：报名活动", ID);
+    const res = await teamService.putSignIn(ID);
+    console.log('请求成功，返回数据', res);
+    if (res.data.code === 200) {
+      if (res.data.msg === 'OK') {
+        ElMessage({
+          type: 'success',
+          message: '报名成功',
+        })
+        dialogTableVisible.value = false;
+      } else{
+        ElMessage.error(res.data.msg);
+      }
+    }
+  }
+
+  const clickToSignOut = async (ID : number) => {
+    console.log("请求数据：取消报名", ID);
+    const res = await teamService.putSignOut(ID);
+    console.log('请求成功，返回数据', res);
+    if (res.data.code === 200) {
+      if (res.data.msg === 'OK') {
+        ElMessage({
+          type: 'success',
+          message: '取消报名成功',
+        })
+        dialogTableVisible.value = false;
       } else{
         ElMessage.error(res.data.msg);
       }

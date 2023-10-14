@@ -5,7 +5,7 @@ const loginStore = defineStore(
     "login",
     () => {
         const loginSession = ref(false)
-        const setLogin = (loginNewSession : boolean) => {
+        const setLogin = (loginNewSession: boolean) => {
             loginSession.value = loginNewSession;
         };
 
@@ -14,8 +14,8 @@ const loginStore = defineStore(
             setLogin,
         }
     }, {
-        persist: true,
-    }
+    persist: true,
+}
 );
 
 export default loginStore;

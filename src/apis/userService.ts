@@ -2,7 +2,7 @@ import request from "./request";
 import { loginInfo, registerInfo, userSubmitInfo } from "../types/personalInfo";
 
 export default class userService {
-    static async login(data: loginInfo) : Promise<any> {
+    static async login(data: loginInfo): Promise<any> {
         return request({
             "headers": {
                 "Content-Type": "application/json"
@@ -13,7 +13,7 @@ export default class userService {
         });
     }
 
-    static async register(data: registerInfo) : Promise<any> {
+    static async register(data: registerInfo): Promise<any> {
         return request({
             "headers": {
                 "Content-Type": "application/json"
@@ -24,7 +24,7 @@ export default class userService {
         });
     }
 
-    static async getBasicPersonalInformation(name : string) : Promise<any> {
+    static async getBasicPersonalInformation(name: string): Promise<any> {
         return request({
             "headers": {
                 "Content-Type": "application/json"
@@ -32,12 +32,12 @@ export default class userService {
             method: "get",
             url: "/api/user/info",
             params: {
-                name : name,
+                name: name,
             },
         });
     }
 
-    static async putBasicPersonalInformation(data : userSubmitInfo) : Promise<any> {
+    static async putBasicPersonalInformation(data: userSubmitInfo): Promise<any> {
         return request({
             "headers": {
                 "Content-Type": "application/json"
@@ -48,7 +48,7 @@ export default class userService {
         });
     }
 
-    static async uploadAvatar(data : FormData) : Promise<any> {
+    static async uploadAvatar(data: FormData): Promise<any> {
         return request({
             "headers": {
                 "Content-Type": "multipart/form-data"
@@ -56,6 +56,16 @@ export default class userService {
             method: "post",
             url: "api/user/avatar",
             data: data,
-        })
+        });
+    }
+
+    static async getMessage(): Promise<any> {
+        return request({
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            method: "get",
+            url: "/api/user/message",
+        });
     }
 }

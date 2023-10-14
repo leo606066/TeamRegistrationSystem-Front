@@ -11,18 +11,18 @@ export interface teamInfo {
 }
 
 export interface teamCompeleteInfo {
-    id : number,
-    team_name : string,
-    signed : number,
-    captain_name : string,
-    slogan : string,
-    avatar : string,
-    confirm : number,
-    number : number,
-    users : userInfo[],
+    id: number,
+    team_name: string,
+    signed: number,
+    captain_name: string,
+    slogan: string,
+    avatar: string,
+    confirm: number,
+    number: number,
+    users: userInfo[],
 }
 
 export interface teamPermission {
-    id : number,
-    team_password : string,
+    id: number,
+    team_password: string,
 }

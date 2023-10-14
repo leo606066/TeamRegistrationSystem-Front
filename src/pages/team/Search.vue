@@ -3,10 +3,7 @@
 </template>
 
 <script setup lang="ts">
-    import TeamSearchVue from '../../components/team/teamSearch.vue';
+import TeamSearchVue from '../../components/team/teamSearch.vue';
 </script>
 
-<style scoped>
-
-</style>
-  
+<style scoped></style>

@@ -10,7 +10,7 @@ const userStore = defineStore(
             avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
         });
 
-        const setUserInfo = (info : userInfo) : void => {
+        const setUserInfo = (info: userInfo): void => {
             userSession.value.name = info.name;
             userSession.value.avatar = info.avatar;
         };
@@ -20,8 +20,8 @@ const userStore = defineStore(
             setUserInfo,
         };
     }, {
-        persist: true,
-    }
+    persist: true,
+}
 );
 
 export default userStore;

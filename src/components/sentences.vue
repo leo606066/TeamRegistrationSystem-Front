@@ -1,18 +1,18 @@
 <template>
-    <div>
-      <p class="footer">{{ getOneGreatWord() }}</p>
-    </div>
-  </template>
+  <div>
+    <p class="footer">{{ getOneGreatWord() }}</p>
+  </div>
+</template>
   
-  <script lang="ts">
-  import { defineComponent } from 'vue';
-  
-  export default defineComponent({
-    name: 'Footer',
-    methods: {
-      // 生成随机励志句
-      getOneGreatWord(): string {
-        const footerContextList: string[] = [
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Footer',
+  methods: {
+    // 生成随机励志句
+    getOneGreatWord(): string {
+      const footerContextList: string[] = [
         '其实所有被千夫所指的困难，都是为了淘汰掉懦夫，仅此而已。',
         '镜子很脏的时候，我们并不会误以为是自己的脸脏。那別人随口说出糟糕的话时，我们也不用觉得糟糕的是我们自己',
         '我依旧敢和生活顶撞，敢在逆境里撒野，直面生活的污水，永远乐意为新的一轮月亮和日落欢呼。',
@@ -31,20 +31,20 @@
         '没有期待的日子反而顺顺利利。',
         '落俗不可避免，浪漫至死不渝。',
         '所谓无底深渊，下去，也是前程万里。',
-        ];
-  
-        // 生成随机数 0-40
-        const num = Math.floor(Math.random() * footerContextList.length);
-        return footerContextList[num];
-      }
+      ];
+
+      // 生成随机数 0-40
+      const num = Math.floor(Math.random() * footerContextList.length);
+      return footerContextList[num];
     }
-  });
-  </script>
-  
-  <style scoped>
-  .footer {
-    text-align: center;
-    font:icon;
   }
-  </style>
+});
+</script>
+  
+<style scoped>
+.footer {
+  text-align: center;
+  font: icon;
+}
+</style>
  

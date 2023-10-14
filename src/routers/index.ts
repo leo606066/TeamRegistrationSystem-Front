@@ -4,6 +4,7 @@ import LoginVue from "../pages/user/Login.vue";
 import RegisterVue from "../pages/user/Register.vue";
 import ProfileEditorVue from "../pages/user/ProfileEditor.vue";
 import TeamsVue from "../pages/team/Search.vue";
+import CreateVue from "../pages/team/Create.vue"
 import LeoTest from '../pages/LeoTest.vue'
 
 const routes = [
@@ -46,6 +47,14 @@ const routes = [
         meta: {
           title: '团队',
         },
+    },
+    {
+      path: "/create",
+      name: "Create",
+      component: CreateVue,
+      meta: {
+        title: '创建团队',
+      }
     },
     {
         path: "/leo",

@@ -56,7 +56,13 @@
               <userProfileVue v-for="user in teamInfo?.users" :name="user.name" :avatar="user.avatar"/>
               <br />
               <br />
-              <el-button type="primary" @click="">加入该团队</el-button>
+              <el-button v-if="teamInfo?.signed === 0" type="primary" @click="">加入该团队</el-button>
+              <el-button v-else-if="teamInfo?.signed === 1" type="danger" @click="">退出该团队</el-button>
+              <div v-else class="">
+                <el-button type="danger" @click="">解散团队</el-button>
+              </div>
+              
+              
             </div>
           </div>
         </div>

@@ -21,12 +21,12 @@
       </el-button>
     </div>
     <el-dropdown v-show="loginSession">
-      <el-menu-item index="/teams">
+      <el-menu-item>
         <el-icon><List /></el-icon> <span>团队</span>
       </el-menu-item>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click="pushToManager"><el-icon><Menu /></el-icon>管理队伍</el-dropdown-item>
+          <el-dropdown-item @click="pushToManager"><el-icon><Menu /></el-icon>查询队伍</el-dropdown-item>
           <el-dropdown-item @click="pushToCreate"><el-icon><CirclePlusFilled /></el-icon>创建队伍</el-dropdown-item>
         </el-dropdown-menu>
       </template>
@@ -83,7 +83,7 @@ const pushToOut = () => {
 };
 
 const pushToManager = () => {
-  router.push("/manager");
+  router.push("/teams");
 }
 
 const pushToCreate = () => {

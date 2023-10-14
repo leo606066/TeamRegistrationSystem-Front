@@ -152,7 +152,7 @@
         ElMessage({
           type: 'success',
           message: '成功加入团队',
-        })
+        });
         update(ID);
       } else{
         ElMessage.error(res.data.msg);
@@ -169,7 +169,7 @@
         ElMessage({
           type: 'success',
           message: '退出团队',
-        })
+        });
         update(ID);
       } else{
         ElMessage.error(res.data.msg);
@@ -186,7 +186,8 @@
         ElMessage({
           type: 'success',
           message: '解散团队',
-        })
+        });
+        SearchTeam();
         dialogTableVisible.value = false;
       } else{
         ElMessage.error(res.data.msg);
@@ -203,7 +204,8 @@
         ElMessage({
           type: 'success',
           message: '报名成功',
-        })
+        });
+        SearchTeam();
         dialogTableVisible.value = false;
       } else{
         ElMessage.error(res.data.msg);
@@ -220,7 +222,8 @@
         ElMessage({
           type: 'success',
           message: '取消报名成功',
-        })
+        });
+        SearchTeam();
         dialogTableVisible.value = false;
       } else{
         ElMessage.error(res.data.msg);

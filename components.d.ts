@@ -36,7 +36,7 @@ declare module 'vue' {
     ElUpload: typeof import('element-plus/es')['ElUpload']
     Footer: typeof import('./src/components/footer.vue')['default']
     Header: typeof import('./src/components/header.vue')['default']
-    Profile: typeof import('./src/components/team/profile.vue')['default']
+    Profile: typeof import('./src/components/user/profile.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sentences: typeof import('./src/components/sentences.vue')['default']

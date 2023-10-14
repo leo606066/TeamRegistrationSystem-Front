@@ -106,7 +106,7 @@
     console.log("请求成功，获得数据:", res);
 
     if (res.data.code === 200) {
-        if (res.data.msg === 'OK') {
+        if (res.data.msg === 'ok') {
             const responseUserInfo = res.data.data.team_info;
             teamInfo.value = responseUserInfo;
             console.log("请求成功，获得数据:", responseUserInfo);

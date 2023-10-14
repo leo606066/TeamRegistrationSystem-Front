@@ -21,12 +21,7 @@
 import { ref } from 'vue';
 import { ElMessage } from 'element-plus';
 import type { UploadUserFile } from 'element-plus';
-import userService from '../../apis/userService';
-import userStore from '../../stores/userStore.ts';
-import { storeToRefs } from 'pinia';
-
-const newUserStore = userStore();
-const { userSession } = storeToRefs(newUserStore);
+import teamService from '../../apis/teamService';
 
 const fileList = ref<UploadUserFile[]>();
 // 暂未实现
@@ -50,12 +45,11 @@ const confirm = async () => {
     param.append('image', val.raw);
   });
   fileList.value = [];
-  const res = await userService.uploadAvatar(param);
+  const res = await teamService.uploadAvatar(param);
+  console.log(res);
   if (res.data.code === 200) {
     if (res.data.msg === 'OK') {
       console.log('上传成功');
-      const Avatar = res.data.data.avatar;
-      userSession.value.avatar = Avatar;
     } else {
       ElMessage.error(res.data.msg);
     }

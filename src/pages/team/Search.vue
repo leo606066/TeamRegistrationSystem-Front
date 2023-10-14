@@ -79,10 +79,10 @@
                 <el-button v-else-if="teamInfo?.signed === 1" type="danger"
                   @click="clickToQuitTeam(teamInfo?.id)">退出该团队</el-button>
                 <div v-else>
-                  <el-button v-show="teamInfo?.confirm == 0" type="info" @click="dialogTableVisible = true">上传团队头像</el-button>
-                  <!-- <el-dialog v-model="dialogTableVisible" title="上传新头像">
+                  <el-dialog v-model="dialogTableVisible2" title="上传新头像">
                     <avatarUploaderVue />
-                  </el-dialog> -->
+                  </el-dialog>
+                  <el-button v-show="teamInfo?.confirm == 0" type="info" @click="dialogTableVisible2 = true">上传团队头像</el-button>
                   <el-button v-show="teamInfo?.confirm == 0" type="danger"
                     @click="clickToDelTeam(teamInfo?.id)">解散团队</el-button>
                   <el-button v-if="teamInfo?.confirm == 0" type="primary"
@@ -104,10 +104,12 @@
   import { teamInfo } from '../../types/teamInfo';
   import { teamCompeleteInfo } from "../../types/teamInfo";
   import userProfileVue from "../../components/user/profile.vue";
+  import avatarUploaderVue from "../../components/team/avatarUploader.vue"
   
   const teamData = ref('');
   const teamList = ref<teamInfo[]>();
   const dialogTableVisible = ref(false);
+  const dialogTableVisible2 = ref(false);
   
   const SearchTeam = async () => {
     if (teamData.value === '') {

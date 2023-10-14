@@ -101,4 +101,15 @@ export default class teamService {
             data: data,
         });
     }
+
+    static async uploadAvatar(data: FormData): Promise<any> {
+        return request({
+            "headers": {
+                "Content-Type": "multipart/form-data"
+            },
+            method: "post",
+            url: "/api/team/avatar",
+            data: data,
+        });
+    }
 };

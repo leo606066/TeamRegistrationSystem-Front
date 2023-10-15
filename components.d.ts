@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AvatarUploader: typeof import('./src/components/user/avatarUploader.vue')['default']
+    AvatarUploader: typeof import('./src/components/team/avatarUploader.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
